@@ -16,24 +16,55 @@ namespace GetHairDresser.Models
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<ExternalUser> ExtraUsers { get; set; }
     }
 
-    [Table("UserProfile")]
+    [Table("Users")]
     public class UserProfile
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
+        public string Location { get; set; }
+        public string SureName { get; set; }
+        public string LastName { get; set; }
+        public string Gender { get; set; }
+        public int Age { get; set; }
     }
 
     public class RegisterExternalLoginModel
     {
+
         [Required]
         [Display(Name = "User name")]
         public string UserName { get; set; }
 
         public string ExternalLoginData { get; set; }
+
+        [Display(Name = "Your Name")]
+        public string Name { get; set; }
+
+        [Display(Name = "Your Page Link")]
+        public string PageLink { get; set; }
+
+        [Display(Name = "Your Location")]
+        public string Location { get; set; }
+
+        [Display(Name = "Your Sure name")]
+        public string SureName { get; set; }
+
+        [Display(Name = "Your Last name")]
+        public string LastName { get; set; }
+
+        [Display(Name = "Your Gender")]
+        public string Gender { get; set; }
+
+        [Display(Name = "Your Age")]
+        public int Age { get; set; }
+
+
+
     }
 
     public class LocalPasswordModel
@@ -93,5 +124,16 @@ namespace GetHairDresser.Models
         public string Provider { get; set; }
         public string ProviderDisplayName { get; set; }
         public string ProviderUserId { get; set; }
+    }
+
+    [Table("ExternalUserDetails")]
+    public class ExternalUser
+    {
+        public int ID { get; set; }
+        public int UserID { get; set; }
+        public string Name { get; set; }
+        public string PageLink { get; set; }
+        public bool? Status { get; set; }
+
     }
 }

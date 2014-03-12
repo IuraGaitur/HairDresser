@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetHairDresser.Client", "GetHairDresser\GetHairDresser.Client.csproj", "{C853A097-4255-4603-864C-4233311E5F09}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetHairDresser.DAL", "GetHairDresser.DAL\GetHairDresser.DAL.csproj", "{447B376D-6A01-4AFF-974C-3DC71580B148}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetHairDresser.BL", "GetHairDresser.BL\GetHairDresser.BL.csproj", "{AAE674A3-A59B-4F69-8F17-28918F84C23A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetHairdDresser.Service", "GetHairdDresser.Service\GetHairdDresser.Service.csproj", "{792834A0-4C37-41C5-8F5E-FA378F32FDDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetHairdresser.Client", "GetHairdresser.Client\GetHairdresser.Client.csproj", "{805409F7-C483-4274-8DD2-49343385D045}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C853A097-4255-4603-864C-4233311E5F09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C853A097-4255-4603-864C-4233311E5F09}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C853A097-4255-4603-864C-4233311E5F09}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C853A097-4255-4603-864C-4233311E5F09}.Release|Any CPU.Build.0 = Release|Any CPU
 		{447B376D-6A01-4AFF-974C-3DC71580B148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{447B376D-6A01-4AFF-974C-3DC71580B148}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{447B376D-6A01-4AFF-974C-3DC71580B148}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -25,6 +23,14 @@ Global
 		{AAE674A3-A59B-4F69-8F17-28918F84C23A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAE674A3-A59B-4F69-8F17-28918F84C23A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAE674A3-A59B-4F69-8F17-28918F84C23A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{792834A0-4C37-41C5-8F5E-FA378F32FDDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{792834A0-4C37-41C5-8F5E-FA378F32FDDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{792834A0-4C37-41C5-8F5E-FA378F32FDDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{792834A0-4C37-41C5-8F5E-FA378F32FDDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{805409F7-C483-4274-8DD2-49343385D045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{805409F7-C483-4274-8DD2-49343385D045}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{805409F7-C483-4274-8DD2-49343385D045}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{805409F7-C483-4274-8DD2-49343385D045}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

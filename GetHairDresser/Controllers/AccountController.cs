@@ -240,7 +240,16 @@ namespace GetHairDresser.Controllers
                 string loginData = OAuthWebSecurity.SerializeProviderUserId(result.Provider, result.ProviderUserId);
                 ViewBag.ProviderDisplayName = OAuthWebSecurity.GetOAuthClientData(result.Provider).DisplayName;
                 ViewBag.ReturnUrl = returnUrl;
-                return View("ExternalLoginConfirmation", new RegisterExternalLoginModel { UserName = result.UserName, ExternalLoginData = loginData });
+                return View("ExternalLoginConfirmation", new RegisterExternalLoginModel
+                {
+                    UserName = result.UserName,
+
+                    ExternalLoginData = loginData,
+
+                    Name = result.ExtraData["name"],
+
+                    PageLink = result.ExtraData["link"]
+                });
             }
         }
 

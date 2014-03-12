@@ -22,9 +22,9 @@ namespace GetHairDresser
             //    consumerKey: "",
             //    consumerSecret: "");
 
-            //OAuthWebSecurity.RegisterFacebookClient(
-            //    appId: "",
-            //    appSecret: "");
+            OAuthWebSecurity.RegisterFacebookClient(
+                appId: "635147809899055",
+                appSecret: "661fa4556eda3476f2545313ab3433de");
 
             //OAuthWebSecurity.RegisterGoogleClient();
         }

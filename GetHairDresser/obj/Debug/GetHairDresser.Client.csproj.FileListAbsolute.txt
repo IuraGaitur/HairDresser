@@ -47,3 +47,5 @@ c:\users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDre
 c:\users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser\obj\Debug\GetHairDresser.Client.csprojResolveAssemblyReference.cache
 c:\users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser\obj\Debug\GetHairDresser.dll
 c:\users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser\obj\Debug\GetHairDresser.pdb
+C:\Users\igaitur\Documents\Visual Studio 2012\Projects\GetHairDresser\GetHairDresser\bin\Facebook.dll
+C:\Users\igaitur\Documents\Visual Studio 2012\Projects\GetHairDresser\GetHairDresser\bin\Facebook.xml

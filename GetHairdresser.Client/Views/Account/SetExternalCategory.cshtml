@@ -1,0 +1,15 @@
+﻿@model GetHairdresser.Client.Models.RegisterExternalLoginModel
+@{
+    ViewBag.Title = "SetExternalCategory";
+}
+
+<h2>SetExternalCategory</h2>
+
+@using (Html.BeginForm("SetClientType", "Account", FormMethod.Post))
+{
+
+    <input type="button" value="hairdresser" class="btn btn-success btn-lg " />
+    <input type="button" value="client" class="btn btn-primary btn-lg "/>
+
+
+}

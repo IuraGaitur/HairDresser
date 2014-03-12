@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Facebook;
 
 namespace GetHairDresser.Controllers
 {
@@ -10,7 +11,7 @@ namespace GetHairDresser.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+            ViewBag.Message = "You will be able to complete your data after.";
 
             return View();
         }
@@ -22,9 +23,19 @@ namespace GetHairDresser.Controllers
             return View();
         }
 
+        public ActionResult GetFacebookData()
+        {
+            //var login = 
+
+
+
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
 
             return View();
         }

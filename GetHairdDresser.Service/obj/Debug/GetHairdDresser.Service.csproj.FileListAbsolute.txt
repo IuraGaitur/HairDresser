@@ -1,0 +1,5 @@
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdDresser.Service\bin\GetHairdDresser.Service.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdDresser.Service\bin\GetHairdDresser.Service.pdb
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdDresser.Service\obj\Debug\GetHairdDresser.Service.csprojResolveAssemblyReference.cache
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdDresser.Service\obj\Debug\GetHairdDresser.Service.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdDresser.Service\obj\Debug\GetHairdDresser.Service.pdb
