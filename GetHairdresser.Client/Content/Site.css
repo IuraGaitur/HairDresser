@@ -49,6 +49,8 @@ mark {
 .float-right {
     float: right;
     width:100%;
+    background-repeat:repeat-x,repeat-y;
+    background-image: url(../Images/backgr_main.png);
 }
 
 .clear-fix:after {
@@ -781,8 +783,9 @@ tr.pager td {
 #logo_image
 {
     width:40%;
-    height:226px;
-    margin:0,auto;
+    height:167px;
+    margin-left:auto;
+    margin-right :auto;
     display: block;
     background-repeat:no-repeat;
     background-image: url(../Images/logo_main.png);
@@ -793,9 +796,133 @@ tr.pager td {
 #header_logo
 {
     width:100%;
-    height:226px;
+    height:167px;
     background-repeat:repeat-x,repeat-y;
     background-image: url(../Images/backgr_main.png);
     
 
+}
+
+.register_fields
+{
+ width:150px;
+ display:inline-block;
+ height:auto;
+ padding:10px;
+}
+.register_btn
+{
+    width : 360px;
+    height:auto;
+}
+
+
+/* CSS menu */
+
+
+@import url(http://fonts.googleapis.com/css?family=Capriola);
+#cssmenu,
+#cssmenu ul,
+#cssmenu ul li,
+#cssmenu ul li a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  line-height: 1;
+  display: block;
+  position: relative;
+  font-family: Capriola, Helvetica, sans-serif;
+}
+#cssmenu {
+  width: 100%;
+  height: 59px;
+  padding-bottom: 4px;
+}
+#cssmenu.align-right {
+  float: right;
+}
+#cssmenu.align-right ul li {
+  float: right;
+  margin-right: 0;
+  margin-left: 4px;
+}
+#cssmenu.align-right ul li:first-child,
+#cssmenu.align-right ul li:first-child > a {
+  border-bottom-right-radius: 3px;
+}
+#cssmenu #bg-one,
+#cssmenu #bg-two,
+#cssmenu #bg-three,
+#cssmenu #bg-four {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+#cssmenu #bg-one {
+  height: 10px;
+  background: #9c11b8;
+}
+#cssmenu #bg-two {
+  height: 59px;
+  z-index: 2;
+  background: url('bg.png');
+}
+#cssmenu #bg-three {
+  bottom: 4px;
+  height: 55px;
+  z-index: 3;
+  background: #222222;
+  background: -moz-linear-gradient(top, #555555 0%, #222222 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #555555), color-stop(100%, #222222));
+  background: -webkit-linear-gradient(top, #555555 0%, #222222 100%);
+  background: -o-linear-gradient(top, #555555 0%, #222222 100%);
+  background: -ms-linear-gradient(top, #555555 0%, #222222 100%);
+  background: linear-gradient(to bottom, #555555 0%, #222222 100%);
+}
+#cssmenu #bg-four {
+  bottom: 4px;
+  height: 55px;
+  z-index: 4;
+  background: url('bg_menu.png');
+}
+#cssmenu ul {
+  height: 59px;
+}
+#cssmenu ul li {
+  float: left;
+  margin-right: 4px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  z-index: 5;
+}
+#cssmenu ul li a {
+  padding: 24px 30px 20px 30px;
+  margin-bottom: 4px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  color: #eeeeee;
+  font-size: 15px;
+  text-decoration: none;
+}
+#cssmenu ul li:first-child,
+#cssmenu ul li:first-child > a {
+  border-bottom-left-radius: 3px;
+}
+#cssmenu ul li:hover,
+#cssmenu ul li.active {
+  background: #9c11b8;
+  background: -moz-linear-gradient(top, #d142ed 0%, #9c11b8 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d142ed), color-stop(100%, #9c11b8));
+  background: -webkit-linear-gradient(top, #d142ed 0%, #9c11b8 100%);
+  background: -o-linear-gradient(top, #d142ed 0%, #9c11b8 100%);
+  background: -ms-linear-gradient(top, #d142ed 0%, #9c11b8 100%);
+  background: linear-gradient(to bottom, #d142ed 0%, #9c11b8 100%);
+}
+#cssmenu ul li a:hover,
+#cssmenu ul li.active > a {
+  background: url('bg.png');
+  color: #ffffff;
 }

@@ -1,0 +1,5 @@
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.Common\bin\Debug\GetHairDresser.Common.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.Common\bin\Debug\GetHairDresser.Common.pdb
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.Common\obj\Debug\GetHairDresser.Common.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.Common\obj\Debug\GetHairDresser.Common.pdb
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.Common\obj\Debug\GetHairDresser.Common.csprojResolveAssemblyReference.cache

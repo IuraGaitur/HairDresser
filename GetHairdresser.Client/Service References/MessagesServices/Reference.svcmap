@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="49f6312a-7ae1-4bc1-ae1a-c98be40462eb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/GetHairDresser.Service/MessagesService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MessagesService.xsd" MetadataType="Schema" ID="857479cb-6c77-4992-b15c-a0370489621f" SourceId="1" SourceUrl="http://localhost/GetHairDresser.Service/MessagesService.svc?xsd=xsd2" />
+    <MetadataFile FileName="MessagesService.disco" MetadataType="Disco" ID="b15a0f24-cc1e-455e-a1e7-4cc57efad5b6" SourceId="1" SourceUrl="http://localhost/GetHairDresser.Service/MessagesService.svc?disco" />
+    <MetadataFile FileName="MessagesService1.xsd" MetadataType="Schema" ID="ac5f7a38-90d8-464a-a4ac-e23e5a2f3e22" SourceId="1" SourceUrl="http://localhost/GetHairDresser.Service/MessagesService.svc?xsd=xsd0" />
+    <MetadataFile FileName="MessagesService2.xsd" MetadataType="Schema" ID="06d45369-9416-4a02-9180-28d61884caec" SourceId="1" SourceUrl="http://localhost/GetHairDresser.Service/MessagesService.svc?xsd=xsd3" />
+    <MetadataFile FileName="MessagesService.wsdl" MetadataType="Wsdl" ID="01ff42f1-117d-4f0d-9f9a-bb2aacbfc337" SourceId="1" SourceUrl="http://localhost/GetHairDresser.Service/MessagesService.svc?wsdl" />
+    <MetadataFile FileName="MessagesService3.xsd" MetadataType="Schema" ID="5de7b3b0-1bdc-4f94-90aa-0c74470271f2" SourceId="1" SourceUrl="http://localhost/GetHairDresser.Service/MessagesService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

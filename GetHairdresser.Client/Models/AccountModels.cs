@@ -8,37 +8,8 @@ using System.Web.Security;
 
 namespace GetHairdresser.Client.Models
 {
-    public class UsersContext : DbContext
-    {
-        public UsersContext()
-            : base("DefaultConnection")
-        {
-            Database.SetInitializer<UsersContext>(new CreateDatabaseIfNotExists<UsersContext>());
-        }
-
-        public DbSet<UserProfile> UserProfiles { get; set; }
-        public DbSet<JobAppointment> jobAppointments { get; set; }
-    }
-
-    [Table("UserProfile")]
+   
     public class UserProfile
-    {
-        [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int UserId { get; set; }
-
-        public string UserName { get; set; }
-        public string SureName { get; set; }
-        public string LastName { get; set; }
-        public string Gender { get; set; }
-        public int Age { get; set; }
-        public string Location { get; set; }
-        public bool Hairdress { get; set; }
-        public Guid UserGuid { get; set; }
-        public virtual List<JobAppointment> JobAppointments { get; set; }
-    }
-
-    public class RegisterExternalLoginModel
     {
         [Required]
         [Display(Name = "User name")]
@@ -52,14 +23,21 @@ namespace GetHairdresser.Client.Models
         [Required]
         [Display(Name = "Gender")]
         public string Gender { get; set; }
-        [Required]
-        [Range(8,80)]
+        [Required(ErrorMessage="Enter your age please")]
+        [Range(8,80,ErrorMessage="Enter your real age")]
         [Display(Name = "Age")]
         public int Age { get; set; }
         [Required]
         [Display(Name = "Location")]
         public string Location { get; set; }
-
+        [ScaffoldColumn(false)]
+        public string FacebookID { get; set; }
+        [ScaffoldColumn(false)]
+        public string clientType { get; set; }
+        [ScaffoldColumn(false)]
+        public Guid UserGuid { get; set; }
+        [ScaffoldColumn(false)]
+        public virtual List<JobAppointment> JobAppointments { get; set; }
 
 
         public string ExternalLoginData { get; set; }

@@ -1,0 +1,16 @@
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.WCFHost\bin\Debug\GetHairdresser.WCFHost.exe.config
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.WCFHost\obj\Debug\GetHairDresser.WCFHost.csprojResolveAssemblyReference.cache
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.WCFHost\bin\Debug\GetHairdresser.WCFHost.exe
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.WCFHost\bin\Debug\GetHairdresser.WCFHost.pdb
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.WCFHost\bin\Debug\GetHairdDresser.Service.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.WCFHost\bin\Debug\GetHairDresser.BL.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.WCFHost\bin\Debug\GetHairdDresser.Service.pdb
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.WCFHost\bin\Debug\GetHairDresser.BL.pdb
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.WCFHost\obj\Debug\GetHairdresser.WCFHost.exe
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.WCFHost\obj\Debug\GetHairdresser.WCFHost.pdb
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.WCFHost\bin\Debug\GetHairDresser.Common.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.WCFHost\bin\Debug\GetHairDresser.DAL.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.WCFHost\bin\Debug\EntityFramework.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.WCFHost\bin\Debug\GetHairDresser.Common.pdb
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.WCFHost\bin\Debug\GetHairDresser.DAL.pdb
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.WCFHost\bin\Debug\EntityFramework.xml

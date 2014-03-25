@@ -1,1 +1,12 @@
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.DAL\bin\Debug\GetHairDresser.DAL.dll.config
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.DAL\bin\Debug\GetHairDresser.DAL.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.DAL\bin\Debug\GetHairDresser.DAL.pdb
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.DAL\bin\Debug\EntityFramework.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.DAL\bin\Debug\GetHairDresser.Common.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.DAL\bin\Debug\GetHairDresser.Common.pdb
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.DAL\bin\Debug\EntityFramework.xml
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.DAL\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.DAL\obj\Debug\GetHairDresser.DAL.csprojResolveAssemblyReference.cache
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.DAL\obj\Debug\GetHairDresser.DAL.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.DAL\obj\Debug\GetHairDresser.DAL.pdb

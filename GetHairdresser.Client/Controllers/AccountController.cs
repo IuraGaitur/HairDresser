@@ -11,6 +11,8 @@ using WebMatrix.WebData;
 using GetHairdresser.Client.Filters;
 using GetHairdresser.Client.Models;
 using System.Web.Script.Serialization;
+using GetHairdresser.Client.UserServices;
+
 
 namespace GetHairdresser.Client.Controllers
 {
@@ -24,7 +26,8 @@ namespace GetHairdresser.Client.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
+            //GHairService.UserBLL.
+            //ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
@@ -64,6 +67,7 @@ namespace GetHairdresser.Client.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            
             return View();
         }
 
@@ -218,16 +222,18 @@ namespace GetHairdresser.Client.Controllers
         [AllowAnonymous]
         public ActionResult ExternalLoginCallback(string returnUrl)
         {
+            User myUser;
+
             AuthenticationResult result = OAuthWebSecurity.VerifyAuthentication(Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
             if (!result.IsSuccessful)
             {
                 return RedirectToAction("ExternalLoginFailure");
             }
 
-            if (OAuthWebSecurity.Login(result.Provider, result.ProviderUserId, createPersistentCookie: false))
-            {
-                return RedirectToLocal(returnUrl);
-            }
+            //if (OAuthWebSecurity.Login(result.Provider, result.ProviderUserId, createPersistentCookie: false))
+            //{
+            //    return RedirectToLocal(returnUrl);
+            //}
 
             if (User.Identity.IsAuthenticated)
             {
@@ -253,19 +259,39 @@ namespace GetHairdresser.Client.Controllers
 
                 Console.WriteLine(objData);
 
-                
-                
-
-                return View("ExternalLoginConfirmation", new RegisterExternalLoginModel
+                UserProfile model = new UserProfile()
                 {
                     UserName = result.UserName,
                     ExternalLoginData = loginData,
                     Gender = result.ExtraData["gender"],
                     LastName = objData["last_name"].ToString(),
                     SureName = objData["first_name"].ToString(),
-                    //Age = objData["age"].ToString(),
-                    Location = objData["location"]["name"].ToString()
-                });
+                    Location = objData["location"]["name"].ToString(),
+                    FacebookID = result.ProviderUserId
+                };
+
+                using (UserServiceClient serviceUser = new UserServiceClient())
+                {
+                    //myUser = serviceUser.GetUserDataByFacebook(model.FacebookID);
+
+                    bool exist = serviceUser.Login(ConvertUserBack(model));
+
+                    if (exist == true)
+                    {
+                        myUser = serviceUser.GetUserDataByFacebook(model.FacebookID);
+                        string userType = serviceUser.GetUserType(myUser);
+                        if (userType == "client")
+                        {
+                            RedirectToAction("Index", "Client", model);
+                        }
+                        else if (userType == "hairdress")
+                        {
+                            RedirectToAction("Index", "Hairdress", model);
+                        }
+                    } 
+                }
+                
+                return View("ExternalLoginConfirmation", model);
             }
         }
 
@@ -275,7 +301,7 @@ namespace GetHairdresser.Client.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult ExternalLoginConfirmation(RegisterExternalLoginModel model, string returnUrl)
+        public ActionResult ExternalLoginConfirmation(UserProfile model, string returnUrl)
         {
             string provider = null;
             string providerUserId = null;
@@ -288,23 +314,26 @@ namespace GetHairdresser.Client.Controllers
             if (ModelState.IsValid)
             {
                 // Insert a new user into the database
-                using (UsersContext db = new UsersContext())
+                using (UserServiceClient serviceUser = new UserServiceClient())
                 {
-                    UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
-                    // Check if user already exists
-                    if (user == null)
-                    {
+                    
                         Guid tempGuid;
-                        // Insert name into the profile table
-                        db.UserProfiles.Add(new UserProfile { UserName = model.UserName,SureName = model.SureName,
-                                                              LastName = model.LastName,
-                                                              Age = model.Age,
-                                                              Gender = model.Gender,
-                                                              Location = model.Location,
-                                                              UserGuid = tempGuid = Guid.NewGuid()
-                        });
-                        var list = db.UserProfiles.ToList();
-                        db.SaveChanges();
+
+                        UserServices.User myuser = new UserServices.User()
+                            {
+
+                                firstName = model.SureName,
+                                lastName = model.LastName,
+                                age = model.Age,
+                                gender = model.Gender,
+                                location = model.Location,
+                                UserGuid = tempGuid = Guid.NewGuid(),
+                                //email = model.Email,
+                                UserFacebook = model.FacebookID
+                            };
+                            serviceUser.Register(myuser);
+                        
+                        
 
 
                         HttpCookie cookieRelateUser = new HttpCookie("Client gui");
@@ -314,15 +343,10 @@ namespace GetHairdresser.Client.Controllers
                         
                         
 
-                        OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
-                        OAuthWebSecurity.Login(provider, providerUserId, createPersistentCookie: false);
+                        //OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
+                        //OAuthWebSecurity.Login(provider, providerUserId, createPersistentCookie: false);
 
-                        return RedirectToAction("SetExternalCategory", "Account");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("UserName", "User name already exists. Please enter a different user name.");
-                    }
+                        return View("SetExternalCategory", ConvertUser(myuser));
                 }
             }
 
@@ -330,6 +354,31 @@ namespace GetHairdresser.Client.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult SetClientType(UserProfile model,string typeClient)
+        {
+            User user = AccountController.ConvertUserBack(model);
+            using (UserServiceClient serviceUser = new UserServiceClient())
+            {
+                if (typeClient == "client")
+                {
+                    serviceUser.SetUserType(user,typeClient);
+                    return View("ClientPage",model);
+                }
+                else if (typeClient == "hairdresser")
+                {
+                    serviceUser.SetUserType(user,typeClient);
+                    return View("HairDressProfile",model);
+                }
+            }
+            return View();
+            
+        }
+
+
+
         
 
         //
@@ -407,6 +456,43 @@ namespace GetHairdresser.Client.Controllers
             }
         }
 
+        private static UserProfile ConvertUser(UserServices.User myuser)
+        {
+            return new UserProfile()
+            {
+                SureName = myuser.firstName,
+                LastName = myuser.lastName,
+                Location = myuser.location,
+                Age = myuser.age,
+                Gender = myuser.gender,
+                clientType = myuser.typeClient,
+                //JobAppointments = myuser.JobAppointments,
+                FacebookID = myuser.UserFacebook,
+                UserGuid = myuser.UserGuid,
+                
+            };
+
+        }
+
+        private static UserServices.User ConvertUserBack(UserProfile myuser)
+        {
+            return new UserServices.User()
+            {
+                firstName = myuser.SureName,
+                 lastName = myuser.LastName ,
+                 location = myuser.Location,
+                 age = myuser.Age,
+                 gender = myuser.Gender,
+                 typeClient= myuser.clientType,
+                 //JobAppointments = myuser.JobAppointments,
+                 UserFacebook = myuser.FacebookID,
+                 UserGuid = myuser.UserGuid
+                 //UserName = myuser.userName
+            };
+
+        }
+
+
         private static string ErrorCodeToString(MembershipCreateStatus createStatus)
         {
             // See http://go.microsoft.com/fwlink/?LinkID=177550 for
@@ -452,20 +538,7 @@ namespace GetHairdresser.Client.Controllers
                 return View("SetExternalCategory");
         }
 
-        [HttpPost]
-        [AllowAnonymous]
-        public ActionResult SetClientType(string typeClient)
-        {
-            if (typeClient == "client")
-            {
-
-            }
-            else if (typeClient == "hairdresser")
-            {
-
-            }
-            return View();
-        }
+        
 
         #endregion
     }

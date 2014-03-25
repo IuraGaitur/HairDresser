@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="bb3be407-7656-44f2-8d1e-569cf13fbce9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/GetHairDresser.Service/JobAppointmentsService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="JobAppointmentsService.xsd" MetadataType="Schema" ID="2192452f-6b5a-4007-921d-8b13c3171c7f" SourceId="1" SourceUrl="http://localhost/GetHairDresser.Service/JobAppointmentsService.svc?xsd=xsd0" />
+    <MetadataFile FileName="JobAppointmentsService1.xsd" MetadataType="Schema" ID="421a21b6-e414-4d81-a1f1-ae5be3d048ba" SourceId="1" SourceUrl="http://localhost/GetHairDresser.Service/JobAppointmentsService.svc?xsd=xsd2" />
+    <MetadataFile FileName="JobAppointmentsService.disco" MetadataType="Disco" ID="39bd91b1-c0fd-4f54-8a16-43ab1abd2bd3" SourceId="1" SourceUrl="http://localhost/GetHairDresser.Service/JobAppointmentsService.svc?disco" />
+    <MetadataFile FileName="JobAppointmentsService2.xsd" MetadataType="Schema" ID="32e60510-1884-47f4-89c4-75853598a0ce" SourceId="1" SourceUrl="http://localhost/GetHairDresser.Service/JobAppointmentsService.svc?xsd=xsd1" />
+    <MetadataFile FileName="JobAppointmentsService.wsdl" MetadataType="Wsdl" ID="4917d29b-d8c3-4a1c-88c4-8ab008ef4cbe" SourceId="1" SourceUrl="http://localhost/GetHairDresser.Service/JobAppointmentsService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -8,6 +8,8 @@ C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdre
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\DotNetOpenAuth.OpenId.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\EntityFramework.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\EntityFramework.SqlServer.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\Facebook.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\Microsoft.Web.WebPages.OAuth.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\Newtonsoft.Json.dll
@@ -25,6 +27,8 @@ C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdre
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\WebMatrix.Data.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\WebMatrix.WebData.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\EntityFramework.xml
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\EntityFramework.SqlServer.xml
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\Facebook.xml
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\Newtonsoft.Json.xml
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\System.Net.Http.Formatting.xml
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\System.Web.Helpers.xml
@@ -46,6 +50,4 @@ C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdre
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\obj\Debug\GetHairdresser.Client.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\obj\Debug\GetHairdresser.Client.pdb
-C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\Facebook.dll
-C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\Facebook.xml
-C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\obj\Debug\GetHairdresser.Client.csprojResolveAssemblyReference.cache
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\obj\Debug\GetHairDresser.Client.csprojResolveAssemblyReference.cache

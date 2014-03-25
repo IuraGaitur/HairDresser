@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/GetHairDresser.Common" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/GetHairDresser.Common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/GetHairDresser.Service/HairdressInfoService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="JobAppointments" nillable="true" type="tns:ArrayOfJobAppointment" />
+      <xs:element minOccurs="0" name="UserFacebook" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserGuid" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="age" type="xs:int" />
+      <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="typeClient" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ArrayOfJobAppointment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="JobAppointment" nillable="true" type="tns:JobAppointment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfJobAppointment" nillable="true" type="tns:ArrayOfJobAppointment" />
+  <xs:complexType name="JobAppointment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateJob" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Hairdresser" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="HourJob" type="ser:duration" />
+      <xs:element minOccurs="0" name="JobAppID" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="JobAppointment" nillable="true" type="tns:JobAppointment" />
+</xs:schema>

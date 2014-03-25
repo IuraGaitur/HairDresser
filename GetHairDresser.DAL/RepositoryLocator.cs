@@ -1,4 +1,4 @@
-﻿using GetHairDresser.DAL.Interfaces;
+﻿using GetHairDresser.Common.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using GetHairDresser.DAL.EntityLayerPath;
 
 namespace GetHairDresser.DAL
 {
-    class RepositoryLocator
+    public class RepositoryLocator
     {
         private static IRepository repository;
         private RepositoryLocator()

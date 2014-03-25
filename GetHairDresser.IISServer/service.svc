@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="GetHairDresser.IISServer.service" CodeBehind="service.svc.cs" %>

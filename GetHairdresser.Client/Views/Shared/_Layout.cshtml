@@ -8,10 +8,10 @@
         @Styles.Render("~/Content/css")
         @Styles.Render("~/Content/themes/boots")
         @Scripts.Render("~/bundles/modernizr")
-    </head>
-    <body>
         
-                
+        
+    </head>
+    <body>        
         <header>
             <div class="content-wrapper">
                 <div class="float-right">
@@ -23,11 +23,11 @@
                             <p class="site-title">@Html.ActionLink(" ", "Index", "Home")</p>
                         </div>
                     </section>
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Index", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <nav id="cssmenu">
+                        <ul >
+                            <li class='active'><span>@Html.ActionLink("Index", "Index", "Home")</span></li>
+                            <li><span>@Html.ActionLink("About", "About", "Home")</span></li>
+                            <li><span>@Html.ActionLink("Contact", "Contact", "Home")</span></li>
                         </ul>
                     </nav>
                 </div>
@@ -49,5 +49,10 @@
 
         @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)
+        <script type="text/javascript">
+        $( document ).ready(function() {
+        $('#cssmenu').prepend('<div id="bg-one"></div><div id="bg-two"></div><div id="bg-three"></div><div id="bg-four"></div>');
+        });
+        </script>
     </body>
 </html>

@@ -1,15 +1,18 @@
-﻿@model GetHairdresser.Client.Models.RegisterExternalLoginModel
+﻿@model GetHairdresser.Client.Models.UserProfile
 @{
     ViewBag.Title = "SetExternalCategory";
 }
 
-<h2>SetExternalCategory</h2>
+        <p>
+            <strong>@ViewBag.ProviderDisplayName</strong>,we succesefully got your data.
+            Please choose type of profile for you.
+        </p>
 
 @using (Html.BeginForm("SetClientType", "Account", FormMethod.Post))
 {
 
-    <input type="button" value="hairdresser" class="btn btn-success btn-lg " />
-    <input type="button" value="client" class="btn btn-primary btn-lg "/>
+    <input type="button" value="hairdresser" class="btn btn-success btn-lg " style="width:400px;height:100px"/>
+    <input type="button" value="client" class="btn btn-primary btn-lg " style="width:200px;height:100px"/>
 
 
 }

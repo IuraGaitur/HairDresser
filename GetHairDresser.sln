@@ -5,9 +5,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetHairDresser.DAL", "GetHa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetHairDresser.BL", "GetHairDresser.BL\GetHairDresser.BL.csproj", "{AAE674A3-A59B-4F69-8F17-28918F84C23A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetHairdDresser.Service", "GetHairdDresser.Service\GetHairdDresser.Service.csproj", "{792834A0-4C37-41C5-8F5E-FA378F32FDDA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetHairDresser.Service", "GetHairdDresser.Service\GetHairDresser.Service.csproj", "{792834A0-4C37-41C5-8F5E-FA378F32FDDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetHairdresser.Client", "GetHairdresser.Client\GetHairdresser.Client.csproj", "{805409F7-C483-4274-8DD2-49343385D045}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetHairDresser.Client", "GetHairdresser.Client\GetHairDresser.Client.csproj", "{805409F7-C483-4274-8DD2-49343385D045}"
+	ProjectSection(ProjectDependencies) = postProject
+		{792834A0-4C37-41C5-8F5E-FA378F32FDDA} = {792834A0-4C37-41C5-8F5E-FA378F32FDDA}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetHairDresser.Common", "GetHairDresser.Common\GetHairDresser.Common.csproj", "{872AB91A-01B9-4E50-B5E2-48A60F1D7A1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +36,10 @@ Global
 		{805409F7-C483-4274-8DD2-49343385D045}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{805409F7-C483-4274-8DD2-49343385D045}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{805409F7-C483-4274-8DD2-49343385D045}.Release|Any CPU.Build.0 = Release|Any CPU
+		{872AB91A-01B9-4E50-B5E2-48A60F1D7A1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{872AB91A-01B9-4E50-B5E2-48A60F1D7A1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{872AB91A-01B9-4E50-B5E2-48A60F1D7A1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{872AB91A-01B9-4E50-B5E2-48A60F1D7A1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
