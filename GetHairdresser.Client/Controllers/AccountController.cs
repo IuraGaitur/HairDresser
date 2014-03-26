@@ -12,6 +12,7 @@ using GetHairdresser.Client.Filters;
 using GetHairdresser.Client.Models;
 using System.Web.Script.Serialization;
 using GetHairdresser.Client.UserServices;
+using AutoMapper;
 
 
 namespace GetHairdresser.Client.Controllers
@@ -248,6 +249,7 @@ namespace GetHairdresser.Client.Controllers
                 ViewBag.ProviderDisplayName = OAuthWebSecurity.GetOAuthClientData(result.Provider).DisplayName;
                 ViewBag.ReturnUrl = returnUrl;
 
+                //Get facebook token 
                 string accesstoken = result.ExtraData["accesstoken"].ToString();
                 var client = new Facebook.FacebookClient(accesstoken);
                 dynamic fbresult = client.Get("me");
@@ -259,26 +261,26 @@ namespace GetHairdresser.Client.Controllers
 
                 Console.WriteLine(objData);
 
+                //Take data from token
                 UserProfile model = new UserProfile()
                 {
-                    UserName = result.UserName,
                     ExternalLoginData = loginData,
-                    Gender = result.ExtraData["gender"],
-                    LastName = objData["last_name"].ToString(),
-                    SureName = objData["first_name"].ToString(),
-                    Location = objData["location"]["name"].ToString(),
-                    FacebookID = result.ProviderUserId
+                    gender = result.ExtraData["gender"],
+                    lastName = objData["last_name"].ToString(),
+                    firstName = objData["first_name"].ToString(),
+                    location = objData["location"]["name"].ToString(),
+                    UserFacebook = result.ProviderUserId
                 };
 
+                //See if user is registered already or not
                 using (UserServiceClient serviceUser = new UserServiceClient())
                 {
-                    //myUser = serviceUser.GetUserDataByFacebook(model.FacebookID);
 
                     bool exist = serviceUser.Login(ConvertUserBack(model));
 
                     if (exist == true)
                     {
-                        myUser = serviceUser.GetUserDataByFacebook(model.FacebookID);
+                        myUser = serviceUser.GetUserDataByFacebook(model.UserFacebook);
                         string userType = serviceUser.GetUserType(myUser);
                         if (userType == "client")
                         {
@@ -313,41 +315,18 @@ namespace GetHairdresser.Client.Controllers
 
             if (ModelState.IsValid)
             {
-                // Insert a new user into the database
-                using (UserServiceClient serviceUser = new UserServiceClient())
-                {
-                    
-                        Guid tempGuid;
-
-                        UserServices.User myuser = new UserServices.User()
-                            {
-
-                                firstName = model.SureName,
-                                lastName = model.LastName,
-                                age = model.Age,
-                                gender = model.Gender,
-                                location = model.Location,
-                                UserGuid = tempGuid = Guid.NewGuid(),
-                                //email = model.Email,
-                                UserFacebook = model.FacebookID
-                            };
-                            serviceUser.Register(myuser);
-                        
+                
+                //HttpCookie cookieRelateUser = new HttpCookie("Client gui");
+                //cookieRelateUser["gui"] = tempGuid.ToString();
+                //cookieRelateUser.Expires = DateTime.Now.AddDays(1);
+                //Response.Cookies.Add(cookieRelateUser);
                         
 
+                //OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
+                //OAuthWebSecurity.Login(provider, providerUserId, createPersistentCookie: false);
 
-                        HttpCookie cookieRelateUser = new HttpCookie("Client gui");
-                        cookieRelateUser["gui"] = tempGuid.ToString();
-                        cookieRelateUser.Expires = DateTime.Now.AddDays(1);
-                        Response.Cookies.Add(cookieRelateUser);
-                        
-                        
-
-                        //OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
-                        //OAuthWebSecurity.Login(provider, providerUserId, createPersistentCookie: false);
-
-                        return View("SetExternalCategory", ConvertUser(myuser));
-                }
+                return View("SetExternalCategory", model);
+                
             }
 
             ViewBag.ProviderDisplayName = OAuthWebSecurity.GetOAuthClientData(provider).DisplayName;
@@ -359,17 +338,22 @@ namespace GetHairdresser.Client.Controllers
         [AllowAnonymous]
         public ActionResult SetClientType(UserProfile model,string typeClient)
         {
-            User user = AccountController.ConvertUserBack(model);
+            Mapper.CreateMap<UserProfile,User>();
+
+           
             using (UserServiceClient serviceUser = new UserServiceClient())
             {
+                User register_user = Mapper.Map<User>(model);
                 if (typeClient == "client")
                 {
-                    serviceUser.SetUserType(user,typeClient);
+                    serviceUser.SetUserType(register_user,typeClient);
+                    serviceUser.Register(register_user);
                     return View("ClientPage",model);
                 }
                 else if (typeClient == "hairdresser")
                 {
-                    serviceUser.SetUserType(user,typeClient);
+                    serviceUser.SetUserType(register_user,typeClient);
+                    serviceUser.Register(register_user);
                     return View("HairDressProfile",model);
                 }
             }
@@ -456,42 +440,7 @@ namespace GetHairdresser.Client.Controllers
             }
         }
 
-        private static UserProfile ConvertUser(UserServices.User myuser)
-        {
-            return new UserProfile()
-            {
-                SureName = myuser.firstName,
-                LastName = myuser.lastName,
-                Location = myuser.location,
-                Age = myuser.age,
-                Gender = myuser.gender,
-                clientType = myuser.typeClient,
-                //JobAppointments = myuser.JobAppointments,
-                FacebookID = myuser.UserFacebook,
-                UserGuid = myuser.UserGuid,
-                
-            };
-
-        }
-
-        private static UserServices.User ConvertUserBack(UserProfile myuser)
-        {
-            return new UserServices.User()
-            {
-                firstName = myuser.SureName,
-                 lastName = myuser.LastName ,
-                 location = myuser.Location,
-                 age = myuser.Age,
-                 gender = myuser.Gender,
-                 typeClient= myuser.clientType,
-                 //JobAppointments = myuser.JobAppointments,
-                 UserFacebook = myuser.FacebookID,
-                 UserGuid = myuser.UserGuid
-                 //UserName = myuser.userName
-            };
-
-        }
-
+       
 
         private static string ErrorCodeToString(MembershipCreateStatus createStatus)
         {

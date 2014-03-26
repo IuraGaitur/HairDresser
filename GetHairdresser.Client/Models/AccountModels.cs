@@ -11,36 +11,48 @@ namespace GetHairdresser.Client.Models
    
     public class UserProfile
     {
-        [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
+        [ScaffoldColumn(false)]
+        public int UserId { get; set; }
+
         [Required]
         [Display(Name = "Sure name")]
-        public string SureName { get; set; }
+        public string firstName { get; set; }
+
         [Required]
         [Display(Name = "Last name")]
-        public string LastName { get; set; }
+        public string lastName { get; set; }
+
         [Required]
         [Display(Name = "Gender")]
-        public string Gender { get; set; }
+        public string gender { get; set; }
+
         [Required(ErrorMessage="Enter your age please")]
         [Range(8,80,ErrorMessage="Enter your real age")]
         [Display(Name = "Age")]
-        public int Age { get; set; }
+        public int age { get; set; }
+
         [Required]
         [Display(Name = "Location")]
-        public string Location { get; set; }
+        public string location { get; set; }
+
         [ScaffoldColumn(false)]
-        public string FacebookID { get; set; }
+        public string email { get; set; }
+
         [ScaffoldColumn(false)]
-        public string clientType { get; set; }
+        public string UserFacebook { get; set; }
+
+        [ScaffoldColumn(false)]
+        public string typeClient { get; set; }
+        
         [ScaffoldColumn(false)]
         public Guid UserGuid { get; set; }
+        
         [ScaffoldColumn(false)]
         public virtual List<JobAppointment> JobAppointments { get; set; }
 
-
+        [ScaffoldColumn(false)]
         public string ExternalLoginData { get; set; }
+
     }
 
     public class LocalPasswordModel

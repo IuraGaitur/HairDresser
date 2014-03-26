@@ -9,15 +9,19 @@ using GetHairDresser.DAL;
 using GetHairDresser.Common.Interfaces;
 using AutoMapper;
 using GetHairDresser.Common.DAL.Entities;
+using GetHairDresser.Common.Mapper.Interfaces;
+using GetHairDresser.BL.Mapper;
 
 namespace GetHairDresser.BL
 {
-    public class UserBLL:IUser
+    public class UserBLL:IUserManage
     {
+        IMapperUser mapper;
+        
         public UserBLL()
         {
-            Mapper.CreateMap<User, UserDTO>();
-            Mapper.CreateMap<UserDTO, User>();
+            mapper = new UserMapper();
+            
         }
 
         IRepository repository = RepositoryLocator.GetRepository();
@@ -25,8 +29,7 @@ namespace GetHairDresser.BL
         public bool Login(User user)
         {
             UserDTO temp_user = new UserDTO();
-            Mapper.DynamicMap(user,temp_user);
-            temp_user = repository.GetUserByFacebook(temp_user.UserFacebook);
+            temp_user = repository.GetUserByFacebook(user.UserFacebook);
             if (temp_user == null)
                 return false;
             return true;
@@ -34,11 +37,10 @@ namespace GetHairDresser.BL
 
         public bool Register(User u)
         {
-            UserDTO temp_user = Mapper.Map<UserDTO>(u);
-            UserDTO registred = repository.GetUserByFacebook(temp_user.UserFacebook);
+            UserDTO registred = repository.GetUserByFacebook(u.UserFacebook);
             if (registred == null)
             {
-                repository.AddUser(temp_user);
+                repository.AddUser(registred);
                 return true;
             }
             return false;
@@ -46,29 +48,28 @@ namespace GetHairDresser.BL
 
         public User GetUserData(Guid id)
         {
-            User user = null;
-            UserDTO temp_user;
+            UserDTO temp_user = null;
             if (id != null)
             {
                 temp_user = repository.GetUser(id);
-                user = Mapper.Map<User>(temp_user);
+                
             }
 
-           return user;
+           return mapper.MapUser(temp_user);
         }
 
 
         public User GetUserByFacebook(string facebookId)
         {
-            User user = null;
-            UserDTO temp_user;
+            
+            UserDTO temp_user = null;
             if (facebookId != null)
             {
                 temp_user = repository.GetUserByFacebook(facebookId);
-                user = Mapper.Map<User>(temp_user);
+                
             }
 
-           return user;
+           return mapper.MapUser(temp_user);
         }
 
 
@@ -76,8 +77,8 @@ namespace GetHairDresser.BL
         {
             if (user != null)
             {
-                UserDTO temp_user = Mapper.Map<UserDTO>(user);
-                repository.EditUser(temp_user);
+                
+                repository.EditUser(mapper.MapUserDTO(user));
                 return true;
             }
             return false;

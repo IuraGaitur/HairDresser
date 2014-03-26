@@ -54,6 +54,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HairdressInfoBLL.cs" />
+    <Compile Include="Mapper\HairdressInfoMapper.cs" />
+    <Compile Include="Mapper\JobAppointMapper.cs" />
+    <Compile Include="Mapper\MessageMapper.cs" />
+    <Compile Include="Mapper\RatingMapper.cs" />
+    <Compile Include="Mapper\UserMapper.cs" />
     <Compile Include="MessageBLL.cs" />
     <Compile Include="UserBLL.cs" />
     <Compile Include="JobAppointmentsBLL.cs" />

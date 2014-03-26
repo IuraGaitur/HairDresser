@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BL\BLLInterfaces\IHairdressInfo.cs" />
-    <Compile Include="BL\BLLInterfaces\IJobAppointments.cs" />
-    <Compile Include="BL\BLLInterfaces\iMessage.cs" />
-    <Compile Include="BL\BLLInterfaces\IUser.cs" />
+    <Compile Include="BL\BLLInterfaces\IHairdressInfoManager.cs" />
+    <Compile Include="BL\BLLInterfaces\IJobAppointmentsManager.cs" />
+    <Compile Include="BL\BLLInterfaces\iMessageManager.cs" />
+    <Compile Include="BL\BLLInterfaces\IUserManager.cs" />
     <Compile Include="BL\Entities\HairdresInfo.cs" />
     <Compile Include="BL\Entities\JobAppointment.cs" />
     <Compile Include="BL\Entities\Message.cs" />
@@ -56,6 +56,11 @@
     <Compile Include="DAL\Entities\RatingDTO.cs" />
     <Compile Include="DAL\Entities\UserDTO.cs" />
     <Compile Include="DAL\Interfaces\IRepository.cs" />
+    <Compile Include="Mapper\Interfaces\IMapperUser.cs" />
+    <Compile Include="Mapper\Interfaces\IMapperHairdressInfo.cs" />
+    <Compile Include="Mapper\Interfaces\IMapperJobAppointment.cs" />
+    <Compile Include="Mapper\Interfaces\IMapperMessages.cs" />
+    <Compile Include="Mapper\Interfaces\IMapperRating.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

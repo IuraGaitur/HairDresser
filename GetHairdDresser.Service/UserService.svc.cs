@@ -14,7 +14,7 @@ namespace GetHairdDresser.Service
     // NOTE: In order to launch WCF Test Client for testing this service, please select UserService.svc or UserService.svc.cs at the Solution Explorer and start debugging.
     public class UserService : IUserService
     {
-      private IUser myUser { get; set; }
+      private IUserManage myUser { get; set; }
 
         public UserService()
         {

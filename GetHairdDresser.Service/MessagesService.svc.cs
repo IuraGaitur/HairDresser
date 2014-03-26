@@ -14,7 +14,7 @@ namespace GetHairdDresser.Service
     // NOTE: In order to launch WCF Test Client for testing this service, please select MessagesService.svc or MessagesService.svc.cs at the Solution Explorer and start debugging.
     public class MessagesService : IMessagesService
     {
-        private iMessage messages { get; set; }
+        private iMessageManager messages { get; set; }
 
         public MessagesService()
         {

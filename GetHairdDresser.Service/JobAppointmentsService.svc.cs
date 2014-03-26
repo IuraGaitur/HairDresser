@@ -14,7 +14,7 @@ namespace GetHairdDresser.Service
     // NOTE: In order to launch WCF Test Client for testing this service, please select JobAppointmentsService.svc or JobAppointmentsService.svc.cs at the Solution Explorer and start debugging.
     public class JobAppointmentsService : IJobAppointmentsService
     {
-        private IJobAppointments jobs { get; set; }
+        private IJobAppointmentsManager jobs { get; set; }
         public JobAppointmentsService()
         {
             jobs = new JobAppointmentsBLL();

@@ -9,21 +9,31 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using GetHairDresser.Common.DAL.Entities;
+using GetHairDresser.Common.Mapper.Interfaces;
+using GetHairDresser.BL.Mapper;
 
 namespace GetHairDresser.BL
 {
-    public class HairdressInfoBLL:IHairdressInfo
+    public class HairdressInfoBLL:IHairdressInfoManager
     {
+
+        IMapperHairdressInfo mapper;
+        
+        public HairdressInfoBLL()
+        {
+            mapper = new HairdressInfoMapper();
+            
+        }
+
         IRepository repository = RepositoryLocator.GetRepository();
         public HairdresInfo GetHairdressInform(int id)
         {
-            HairdresInfo info = null;
+            HairdresInfoDTO infoDTO = null;
             if (id != 0)
             {
-                HairdresInfoDTO infoDTO = repository.GetHairdressInfo(id);
-                info = Mapper.Map<HairdresInfo>(infoDTO);
+                infoDTO = repository.GetHairdressInfo(id);
             }
-            return info;
+            return mapper.MapHairdressInfo(infoDTO);
         }
 
         public bool SetHairdressInform(HairdresInfo info)

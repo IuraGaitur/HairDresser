@@ -9,18 +9,27 @@ using GetHairDresser.Common.Interfaces;
 using GetHairDresser.DAL;
 using AutoMapper;
 using GetHairDresser.Common.DAL.Entities;
+using GetHairDresser.Common.Mapper.Interfaces;
+using GetHairDresser.BL.Mapper;
 
 namespace GetHairDresser.BL
 {
-    public class MessageBLL:iMessage
+    public class MessageBLL:iMessageManager
     {
+        IMapperMessages mapper;
+
+        public MessageBLL()
+        {
+            mapper = new MessageMapper();
+            
+        }
+
         IRepository repository = RepositoryLocator.GetRepository();
         public bool AddMessage(Message message)
         {
             if (message != null)
             {
-                MessageDTO mess = Mapper.Map<MessageDTO>(message);
-                repository.AddMessage(mess);
+                repository.AddMessage(mapper.MapMessageDTO(message));
                 return true;
             }
 
@@ -31,8 +40,7 @@ namespace GetHairDresser.BL
         {
             if (message != null)
             {
-                MessageDTO mess = Mapper.Map<MessageDTO>(message);
-                repository.EditMessage(mess);
+                repository.EditMessage(mapper.MapMessageDTO(message));
                 return true;
             }
 
@@ -59,7 +67,7 @@ namespace GetHairDresser.BL
                 temp_mess = repository.GetMessagesReceived(id);
                 foreach (var temp in temp_mess)
                 {
-                    mess.Add(Mapper.Map<Message>(temp));
+                    mess.Add(mapper.MapMessage(temp));
                 }
             }
 
@@ -74,7 +82,7 @@ namespace GetHairDresser.BL
                 temp_mess = repository.GetMessagesSend(id);
                 foreach (var temp in temp_mess)
                 {
-                    mess.Add(Mapper.Map<Message>(temp));
+                    mess.Add(mapper.MapMessage(temp));
                 }
             }
 

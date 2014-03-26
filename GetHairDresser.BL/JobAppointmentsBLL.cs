@@ -9,21 +9,30 @@ using GetHairDresser.Common.Interfaces;
 using GetHairDresser.DAL;
 using AutoMapper;
 using GetHairDresser.Common.DAL.Entities;
+using GetHairDresser.Common.Mapper.Interfaces;
+using GetHairDresser.BL.Mapper;
 
 
 namespace GetHairDresser.BL
 {
     
-    public class JobAppointmentsBLL:IJobAppointments
+    public class JobAppointmentsBLL:IJobAppointmentsManager
     {
+        IMapperJobAppointment mapper;
+
+        public JobAppointmentsBLL()
+        {
+            mapper = new JobAppointMapper();
+            
+        }
+
 
         IRepository repository = RepositoryLocator.GetRepository();
         public bool AddJobAppointment(JobAppointment jobapp)
         {
             if (jobapp != null)
             {
-                JobAppointmentDTO job = Mapper.Map<JobAppointmentDTO>(jobapp);
-                repository.AddJobAppointment(job);
+                repository.AddJobAppointment(mapper.MapJobAppointmentDTO(jobapp));
                 return true;
             }
 
@@ -34,8 +43,7 @@ namespace GetHairDresser.BL
         {
             if (jobapp != null)
             {
-                JobAppointmentDTO job = Mapper.Map<JobAppointmentDTO>(jobapp);
-                repository.EditJobAppointment(job);
+                repository.EditJobAppointment(mapper.MapJobAppointmentDTO(jobapp));
                 return true;
             }
 
@@ -59,11 +67,11 @@ namespace GetHairDresser.BL
             List<JobAppointmentDTO> temp_jobs = null;
             if (user != null)
             {
-                UserDTO temp_user = Mapper.Map<UserDTO>(user);
-                temp_jobs = repository.GetJobAppointmentsByDate(temp_user, date);
+                IMapperUser userMap = new UserMapper();
+                temp_jobs = repository.GetJobAppointmentsByDate(userMap.MapUserDTO(user), date);
                 foreach (var temp in temp_jobs)
                 {
-                    jobs.Add(Mapper.Map<JobAppointment>(temp));
+                    jobs.Add(mapper.MapJobAppointment(temp));
                 }
 
 
@@ -77,11 +85,11 @@ namespace GetHairDresser.BL
             List<JobAppointmentDTO> temp_jobs = null;
             if (user != null)
             {
-                UserDTO temp_user = Mapper.Map<UserDTO>(user);
-                temp_jobs = repository.GetJobAppointments(temp_user);
+                IMapperUser userMap = new UserMapper();
+                temp_jobs = repository.GetJobAppointments(userMap.MapUserDTO(user));
                 foreach (var temp in temp_jobs)
                 {
-                    jobs.Add(Mapper.Map<JobAppointment>(temp));
+                    jobs.Add(mapper.MapJobAppointment(temp));
                 }
                 
             }

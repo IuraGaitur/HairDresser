@@ -14,7 +14,7 @@ namespace GetHairdDresser.Service
     // NOTE: In order to launch WCF Test Client for testing this service, please select HairdressInfoService.svc or HairdressInfoService.svc.cs at the Solution Explorer and start debugging.
     public class HairdressInfoService : IHairdressInfoService
     {
-        public IHairdressInfo hairdressInfos{ get; set; }
+        public IHairdressInfoManager hairdressInfos{ get; set; }
         public HairdressInfoService()
         {
             hairdressInfos = new HairdressInfoBLL();
