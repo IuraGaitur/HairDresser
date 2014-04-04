@@ -16,9 +16,9 @@ namespace GetHairdDresser.Service
     {
       private IUserManage myUser { get; set; }
 
-        public UserService()
+        public UserService(IUserManage um)
         {
-            myUser = new UserBLL();
+            myUser = um;
         }
         
         public bool Login(User user)

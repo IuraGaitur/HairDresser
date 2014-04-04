@@ -14,7 +14,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetHairDresser.Client", "Ge
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetHairDresser.Common", "GetHairDresser.Common\GetHairDresser.Common.csproj", "{872AB91A-01B9-4E50-B5E2-48A60F1D7A1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetHairDresser.Tests", "GetHairDresser.Tests\GetHairDresser.Tests.csproj", "{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetHairDresser.Tests", "Project1\GetHairDresser.Tests.csproj", "{C2D9ED03-EB27-424D-8586-7744FBA20BFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,30 +78,16 @@ Global
 		{872AB91A-01B9-4E50-B5E2-48A60F1D7A1C}.Release|ARM.ActiveCfg = Release|Any CPU
 		{872AB91A-01B9-4E50-B5E2-48A60F1D7A1C}.Release|x64.ActiveCfg = Release|Any CPU
 		{872AB91A-01B9-4E50-B5E2-48A60F1D7A1C}.Release|x86.ActiveCfg = Release|Any CPU
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Debug|ARM.ActiveCfg = Debug|ARM
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Debug|ARM.Build.0 = Debug|ARM
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Debug|ARM.Deploy.0 = Debug|ARM
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Debug|x64.ActiveCfg = Debug|x64
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Debug|x64.Build.0 = Debug|x64
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Debug|x64.Deploy.0 = Debug|x64
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Debug|x86.ActiveCfg = Debug|x86
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Debug|x86.Build.0 = Debug|x86
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Debug|x86.Deploy.0 = Debug|x86
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Release|ARM.ActiveCfg = Release|ARM
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Release|ARM.Build.0 = Release|ARM
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Release|ARM.Deploy.0 = Release|ARM
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Release|x64.ActiveCfg = Release|x64
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Release|x64.Build.0 = Release|x64
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Release|x64.Deploy.0 = Release|x64
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Release|x86.ActiveCfg = Release|x86
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Release|x86.Build.0 = Release|x86
-		{CAD2E629-BBE4-4B11-92DD-7D815FDF56F5}.Release|x86.Deploy.0 = Release|x86
+		{C2D9ED03-EB27-424D-8586-7744FBA20BFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2D9ED03-EB27-424D-8586-7744FBA20BFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2D9ED03-EB27-424D-8586-7744FBA20BFE}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{C2D9ED03-EB27-424D-8586-7744FBA20BFE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C2D9ED03-EB27-424D-8586-7744FBA20BFE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C2D9ED03-EB27-424D-8586-7744FBA20BFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2D9ED03-EB27-424D-8586-7744FBA20BFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2D9ED03-EB27-424D-8586-7744FBA20BFE}.Release|ARM.ActiveCfg = Release|Any CPU
+		{C2D9ED03-EB27-424D-8586-7744FBA20BFE}.Release|x64.ActiveCfg = Release|Any CPU
+		{C2D9ED03-EB27-424D-8586-7744FBA20BFE}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

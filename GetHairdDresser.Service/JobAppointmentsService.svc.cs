@@ -15,9 +15,9 @@ namespace GetHairdDresser.Service
     public class JobAppointmentsService : IJobAppointmentsService
     {
         private IJobAppointmentsManager jobs { get; set; }
-        public JobAppointmentsService()
+        public JobAppointmentsService(IJobAppointmentsManager iJob)
         {
-            jobs = new JobAppointmentsBLL();
+            jobs = iJob;
         }
         public bool AddJobAppointment(JobAppointment jobapp)
         {

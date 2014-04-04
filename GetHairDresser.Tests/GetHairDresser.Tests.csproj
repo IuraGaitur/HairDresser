@@ -109,7 +109,10 @@
     <SDKReference Include="TestPlatform, Version=11.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="HairdressInfoTest.cs" />
+    <Compile Include="JobAppointsTest.cs" />
+    <Compile Include="MessageManageTest.cs" />
+    <Compile Include="UserManageTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

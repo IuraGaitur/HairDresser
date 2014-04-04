@@ -16,9 +16,9 @@ namespace GetHairdDresser.Service
     {
         private iMessageManager messages { get; set; }
 
-        public MessagesService()
+        public MessagesService(iMessageManager mess)
         {
-            messages = new MessageBLL();
+            messages = mess;
         }
 
         public bool AddMessage(Message message)

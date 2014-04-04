@@ -15,9 +15,9 @@ namespace GetHairdDresser.Service
     public class HairdressInfoService : IHairdressInfoService
     {
         public IHairdressInfoManager hairdressInfos{ get; set; }
-        public HairdressInfoService()
+        public HairdressInfoService(IHairdressInfoManager ihair)
         {
-            hairdressInfos = new HairdressInfoBLL();
+            hairdressInfos = ihair;
         }
 
         public HairdresInfo GetHairdressInform(int id)

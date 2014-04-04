@@ -7,14 +7,14 @@ using System.Web.Mvc;
 
 namespace GetHairdresser.Client.Controllers
 {
-    public class HaidressController : Controller
+    public class HairdressController : Controller
     {
         //
         // GET: /Haidress/
 
-        public ActionResult HairDressProfile(UserProfile model)
+        public ActionResult Index(UserProfile model)
         {
-            return View();
+            return View("HairDressProfile");
         }
 
     }

@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="GetHairdDresser.Service.JobAppointmentsService" CodeBehind="JobAppointmentsService.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="GetHairdDresser.Service.JobAppointmentsService" CodeBehind="JobAppointmentsService.svc.cs"  Factory="GetHairdDresser.Service.WcfServiceFactory"%>

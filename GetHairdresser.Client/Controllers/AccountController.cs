@@ -27,8 +27,7 @@ namespace GetHairdresser.Client.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            //GHairService.UserBLL.
-            //ViewBag.ReturnUrl = returnUrl;
+            
             return View();
         }
 
@@ -57,169 +56,168 @@ namespace GetHairdresser.Client.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            WebSecurity.Logout();
 
             return RedirectToAction("Index", "Home");
         }
+        #region AuthCode
+        ////
+        //// GET: /Account/Register
 
-        //
-        // GET: /Account/Register
-
-        [AllowAnonymous]
-        public ActionResult Register()
-        {
+        //[AllowAnonymous]
+        //public ActionResult Register()
+        //{
             
-            return View();
-        }
+        //    return View();
+        //}
 
-        //
-        // POST: /Account/Register
+        ////
+        //// POST: /Account/Register
 
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                // Attempt to register the user
-                try
-                {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-                    WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("About", "Account");
-                }
-                catch (MembershipCreateUserException e)
-                {
-                    ModelState.AddModelError("SetExternalCategory", ErrorCodeToString(e.StatusCode));
-                }
-            }
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Register(RegisterModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        // Attempt to register the user
+        //        try
+        //        {
+        //            WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+        //            WebSecurity.Login(model.UserName, model.Password);
+        //            return RedirectToAction("About", "Account");
+        //        }
+        //        catch (MembershipCreateUserException e)
+        //        {
+        //            ModelState.AddModelError("SetExternalCategory", ErrorCodeToString(e.StatusCode));
+        //        }
+        //    }
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
-        }
+        //    // If we got this far, something failed, redisplay form
+        //    return View(model);
+        //}
 
-        //
-        // POST: /Account/Disassociate
+        ////
+        //// POST: /Account/Disassociate
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Disassociate(string provider, string providerUserId)
-        {
-            string ownerAccount = OAuthWebSecurity.GetUserName(provider, providerUserId);
-            ManageMessageId? message = null;
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Disassociate(string provider, string providerUserId)
+        //{
+        //    string ownerAccount = OAuthWebSecurity.GetUserName(provider, providerUserId);
+        //    ManageMessageId? message = null;
 
-            // Only disassociate the account if the currently logged in user is the owner
-            if (ownerAccount == User.Identity.Name)
-            {
-                // Use a transaction to prevent the user from deleting their last login credential
-                using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.Serializable }))
-                {
-                    bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
-                    if (hasLocalAccount || OAuthWebSecurity.GetAccountsFromUserName(User.Identity.Name).Count > 1)
-                    {
-                        OAuthWebSecurity.DeleteAccount(provider, providerUserId);
-                        scope.Complete();
-                        message = ManageMessageId.RemoveLoginSuccess;
-                    }
-                }
-            }
+        //    // Only disassociate the account if the currently logged in user is the owner
+        //    if (ownerAccount == User.Identity.Name)
+        //    {
+        //        // Use a transaction to prevent the user from deleting their last login credential
+        //        using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.Serializable }))
+        //        {
+        //            bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
+        //            if (hasLocalAccount || OAuthWebSecurity.GetAccountsFromUserName(User.Identity.Name).Count > 1)
+        //            {
+        //                OAuthWebSecurity.DeleteAccount(provider, providerUserId);
+        //                scope.Complete();
+        //                message = ManageMessageId.RemoveLoginSuccess;
+        //            }
+        //        }
+        //    }
 
-            return RedirectToAction("Manage", new { Message = message });
-        }
+        //    return RedirectToAction("Manage", new { Message = message });
+        //}
 
-        //
-        // GET: /Account/Manage
+        ////
+        //// GET: /Account/Manage
 
-        public ActionResult Manage(ManageMessageId? message)
-        {
-            ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
-                : "";
-            ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
-            ViewBag.ReturnUrl = Url.Action("Manage");
-            return View();
-        }
+        //public ActionResult Manage(ManageMessageId? message)
+        //{
+        //    ViewBag.StatusMessage =
+        //        message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
+        //        : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
+        //        : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
+        //        : "";
+        //    ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
+        //    ViewBag.ReturnUrl = Url.Action("Manage");
+        //    return View();
+        //}
 
-        //
-        // POST: /Account/Manage
+        ////
+        //// POST: /Account/Manage
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Manage(LocalPasswordModel model)
-        {
-            bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
-            ViewBag.HasLocalPassword = hasLocalAccount;
-            ViewBag.ReturnUrl = Url.Action("Manage");
-            if (hasLocalAccount)
-            {
-                if (ModelState.IsValid)
-                {
-                    // ChangePassword will throw an exception rather than return false in certain failure scenarios.
-                    bool changePasswordSucceeded;
-                    try
-                    {
-                        changePasswordSucceeded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
-                    }
-                    catch (Exception)
-                    {
-                        changePasswordSucceeded = false;
-                    }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Manage(LocalPasswordModel model)
+        //{
+        //    bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
+        //    ViewBag.HasLocalPassword = hasLocalAccount;
+        //    ViewBag.ReturnUrl = Url.Action("Manage");
+        //    if (hasLocalAccount)
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            // ChangePassword will throw an exception rather than return false in certain failure scenarios.
+        //            bool changePasswordSucceeded;
+        //            try
+        //            {
+        //                changePasswordSucceeded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
+        //            }
+        //            catch (Exception)
+        //            {
+        //                changePasswordSucceeded = false;
+        //            }
 
-                    if (changePasswordSucceeded)
-                    {
-                        return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
-                    }
-                }
-            }
-            else
-            {
-                // User does not have a local password so remove any validation errors caused by a missing
-                // OldPassword field
-                ModelState state = ModelState["OldPassword"];
-                if (state != null)
-                {
-                    state.Errors.Clear();
-                }
+        //            if (changePasswordSucceeded)
+        //            {
+        //                return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
+        //            }
+        //            else
+        //            {
+        //                ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        // User does not have a local password so remove any validation errors caused by a missing
+        //        // OldPassword field
+        //        ModelState state = ModelState["OldPassword"];
+        //        if (state != null)
+        //        {
+        //            state.Errors.Clear();
+        //        }
 
-                if (ModelState.IsValid)
-                {
-                    try
-                    {
-                        WebSecurity.CreateAccount(User.Identity.Name, model.NewPassword);
-                        return RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
-                    }
-                    catch (Exception e)
-                    {
-                        ModelState.AddModelError("", e);
-                    }
-                }
-            }
+        //        if (ModelState.IsValid)
+        //        {
+        //            try
+        //            {
+        //                WebSecurity.CreateAccount(User.Identity.Name, model.NewPassword);
+        //                return RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
+        //            }
+        //            catch (Exception e)
+        //            {
+        //                ModelState.AddModelError("", e);
+        //            }
+        //        }
+        //    }
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
-        }
+        //    // If we got this far, something failed, redisplay form
+        //    return View(model);
+        //}
 
         //
         // POST: /Account/ExternalLogin
 
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult ExternalLogin(string provider, string returnUrl)
-        {
-            return new ExternalLoginResult(provider, Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
-        }
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult ExternalLogin(string provider, string returnUrl)
+        //{
+        //    return new ExternalLoginResult(provider, Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
+        //}
 
         //
         // GET: /Account/ExternalLoginCallback
-
+        #endregion
         [AllowAnonymous]
         public ActionResult ExternalLoginCallback(string returnUrl)
         {
@@ -231,10 +229,10 @@ namespace GetHairdresser.Client.Controllers
                 return RedirectToAction("ExternalLoginFailure");
             }
 
-            //if (OAuthWebSecurity.Login(result.Provider, result.ProviderUserId, createPersistentCookie: false))
-            //{
-            //    return RedirectToLocal(returnUrl);
-            //}
+            if (OAuthWebSecurity.Login(result.Provider, result.ProviderUserId, createPersistentCookie: false))
+            {
+                return RedirectToLocal(returnUrl);
+            }
 
             if (User.Identity.IsAuthenticated)
             {
@@ -253,13 +251,13 @@ namespace GetHairdresser.Client.Controllers
                 string accesstoken = result.ExtraData["accesstoken"].ToString();
                 var client = new Facebook.FacebookClient(accesstoken);
                 dynamic fbresult = client.Get("me");
-                
 
+                //OAuthWebSecurity.CreateOrUpdateAccount(
                 JavaScriptSerializer jss = new JavaScriptSerializer();
 
                 dynamic objData = jss.Deserialize<dynamic>(fbresult.ToString());
 
-                Console.WriteLine(objData);
+
 
                 //Take data from token
                 UserProfile model = new UserProfile()
@@ -276,23 +274,24 @@ namespace GetHairdresser.Client.Controllers
                 using (UserServiceClient serviceUser = new UserServiceClient())
                 {
 
-                    bool exist = serviceUser.Login(ConvertUserBack(model));
-
+                    bool exist = serviceUser.Login(UserMap(model));
                     if (exist == true)
                     {
                         myUser = serviceUser.GetUserDataByFacebook(model.UserFacebook);
                         string userType = serviceUser.GetUserType(myUser);
                         if (userType == "client")
                         {
-                            RedirectToAction("Index", "Client", model);
+                            return RedirectToAction("Index", "Client");
+                            //return View("~/Views/Client/ClientPage.cshtml");
                         }
                         else if (userType == "hairdress")
                         {
-                            RedirectToAction("Index", "Hairdress", model);
+                            return RedirectToAction("Index", "Hairdress");
+                            //return View("~/Views/Hairdress/HairDressProfile.cshtml");
                         }
-                    } 
+                    }
                 }
-                
+
                 return View("ExternalLoginConfirmation", model);
             }
         }
@@ -307,7 +306,7 @@ namespace GetHairdresser.Client.Controllers
         {
             string provider = null;
             string providerUserId = null;
-
+            
             if (User.Identity.IsAuthenticated || !OAuthWebSecurity.TryDeserializeProviderUserId(model.ExternalLoginData, out provider, out providerUserId))
             {
                 return RedirectToAction("Manage");
@@ -315,13 +314,7 @@ namespace GetHairdresser.Client.Controllers
 
             if (ModelState.IsValid)
             {
-                
-                //HttpCookie cookieRelateUser = new HttpCookie("Client gui");
-                //cookieRelateUser["gui"] = tempGuid.ToString();
-                //cookieRelateUser.Expires = DateTime.Now.AddDays(1);
-                //Response.Cookies.Add(cookieRelateUser);
-                        
-
+       
                 //OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
                 //OAuthWebSecurity.Login(provider, providerUserId, createPersistentCookie: false);
 
@@ -336,34 +329,70 @@ namespace GetHairdresser.Client.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult SetClientType(UserProfile model,string typeClient)
+        public ActionResult SetExternalCategory(UserProfile model,string typeClient)
         {
-            Mapper.CreateMap<UserProfile,User>();
+            
 
            
             using (UserServiceClient serviceUser = new UserServiceClient())
             {
-                User register_user = Mapper.Map<User>(model);
+                User register_user = UserMap(model);
+                register_user.UserGuid = new Guid();
+                AddGuidIdInCookies(register_user.UserGuid.ToString());
                 if (typeClient == "client")
                 {
-                    serviceUser.SetUserType(register_user,typeClient);
+                    register_user.typeClient = typeClient;
                     serviceUser.Register(register_user);
-                    return View("ClientPage",model);
+                    return RedirectToAction("Index", "Client");
+                    //return View("~/Views/Client/ClientPage.cshtml");
                 }
                 else if (typeClient == "hairdresser")
                 {
                     serviceUser.SetUserType(register_user,typeClient);
                     serviceUser.Register(register_user);
-                    return View("HairDressProfile",model);
+                    return RedirectToAction("Index", "Hairdress");
+                    //return View("~/Views/Hairdress/HairDressProfile.cshtml");
                 }
             }
             return View();
             
         }
 
+        #region cookies
+        //public void AddGuidIdInCookies(string guidId)
+        //{
+        //    HttpCookie cookieRelateUser = new HttpCookie("Client gui");
+        //    cookieRelateUser["guid"] = guidId;
+        //    cookieRelateUser.Expires = DateTime.Now.AddDays(1);
+        //    Response.Cookies.Add(cookieRelateUser);
+        //}
+        //public String GetGuidIdFromCookies()
+        //{
+        //    string userSettings = null;
+        //    if (Request.Cookies["Client gui"] != null)
+        //    {
+                
+        //        if (Request.Cookies["Client gui"]["guid"] != null)
+        //        { 
+        //            userSettings = Request.Cookies["Client gui"]["guid"]; 
+        //        }
+        //    }
+
+        //    return userSettings;
+        //}
+        //public void DeleteCookie()
+        //{
+        //    if (Request.Cookies["Client gui"] != null)
+        //    {
+        //        HttpCookie myCookie = new HttpCookie("guid");
+        //        myCookie.Expires = DateTime.Now.AddDays(-1d);
+        //        Response.Cookies.Add(myCookie);
+        //    }
+        //}
+
+        #endregion
 
 
-        
 
         //
         // GET: /Account/ExternalLoginFailure
@@ -439,8 +468,39 @@ namespace GetHairdresser.Client.Controllers
                 OAuthWebSecurity.RequestAuthentication(Provider, ReturnUrl);
             }
         }
+        #region Mappers
+        public static User UserMap(UserProfile user)
+        {
+            return new User()
+            {
+                UserId = user.UserId,
+                age = user.age,
+                email = user.email,
+                firstName = user.firstName,
+                lastName = user.lastName,
+                location = user.location,
+                typeClient = user.typeClient,
+                UserFacebook = user.UserFacebook,
+                UserGuid = user.UserGuid
+            };
+        }
+        public static UserProfile UserProfileMap(User user)
+        {
+            return new UserProfile()
+            {
+                UserId = user.UserId,
+                age = user.age,
+                email = user.email,
+                firstName = user.firstName,
+                lastName = user.lastName,
+                location = user.location,
+                typeClient = user.typeClient,
+                UserFacebook = user.UserFacebook,
+                UserGuid = user.UserGuid
+            };
+        }
+        #endregion
 
-       
 
         private static string ErrorCodeToString(MembershipCreateStatus createStatus)
         {

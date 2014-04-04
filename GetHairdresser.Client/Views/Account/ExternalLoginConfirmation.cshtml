@@ -23,37 +23,32 @@
         </p>
         <ol>
             <li class="name">
-                @Html.LabelFor(m => m.UserName, new {@class = "register_fields" })
-                @Html.TextBoxFor(m => m.UserName, new {style="width:200px" })
-                @Html.ValidationMessageFor(m => m.UserName)
+                @Html.LabelFor(m => m.firstName, new {@class = "register_fields" })
+                @Html.TextBoxFor(m => m.firstName, new {style="width:200px" })
+                @Html.ValidationMessageFor(m => m.firstName)
             </li>
             <li class="name">
-                @Html.LabelFor(m => m.SureName, new {@class = "register_fields" })
-                @Html.TextBoxFor(m => m.SureName, new {style="width:200px" })
-                @Html.ValidationMessageFor(m => m.SureName)
+                @Html.LabelFor(m => m.lastName, new {@class = "register_fields" })
+                @Html.TextBoxFor(m => m.lastName, new {style="width:200px" })
+                @Html.ValidationMessageFor(m => m.lastName)
             </li>
             <li class="name">
-                @Html.LabelFor(m => m.LastName, new {@class = "register_fields" })
-                @Html.TextBoxFor(m => m.LastName, new {style="width:200px" })
-                @Html.ValidationMessageFor(m => m.LastName)
+                @Html.LabelFor(m => m.age, new {@class = "register_fields" })
+                @Html.TextBoxFor(m => m.age, new {style="width:200px" })
+                @Html.ValidationMessageFor(m => m.age)
             </li>
             <li class="name">
-                @Html.LabelFor(m => m.Age, new {@class = "register_fields" })
-                @Html.TextBoxFor(m => m.Age, new {style="width:200px" })
-                @Html.ValidationMessageFor(m => m.Age)
+                @Html.LabelFor(m => m.gender, new {@class = "register_fields" })
+                @Html.TextBoxFor(m => m.gender, new {style="width:200px" })
+                @Html.ValidationMessageFor(m => m.gender)
             </li>
             <li class="name">
-                @Html.LabelFor(m => m.Gender, new {@class = "register_fields" })
-                @Html.TextBoxFor(m => m.Gender, new {style="width:200px" })
-                @Html.ValidationMessageFor(m => m.Gender)
-            </li>
-            <li class="name">
-                @Html.LabelFor(m => m.Location, new {@class = "register_fields" })
-                @Html.TextBoxFor(m => m.Location, new {style="width:200px" })
-                @Html.ValidationMessageFor(m => m.Location)
+                @Html.LabelFor(m => m.location, new {@class = "register_fields" })
+                @Html.TextBoxFor(m => m.location, new {style="width:200px" })
+                @Html.ValidationMessageFor(m => m.location)
             </li>
         </ol>
-        @Html.HiddenFor(m => m.FacebookID)
+        @Html.HiddenFor(m => m.UserFacebook)
         @Html.HiddenFor(m => m.ExternalLoginData)
         <input type="submit" value="Register" class="btn btn-primary register_btn"/>
     </fieldset>

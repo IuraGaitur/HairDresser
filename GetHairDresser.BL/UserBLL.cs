@@ -38,9 +38,11 @@ namespace GetHairDresser.BL
         public bool Register(User u)
         {
             UserDTO registred = repository.GetUserByFacebook(u.UserFacebook);
+
             if (registred == null)
             {
-                repository.AddUser(registred);
+                
+                repository.AddUser(mapper.MapUserDTO(u));
                 return true;
             }
             return false;
