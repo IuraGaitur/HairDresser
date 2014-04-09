@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GetHairDresser.Common.DAL.Entities
 {
     
     public class HairdresInfoDTO
     {
-        [Key]
+        [Key, ForeignKey("HairdressID")]
         public int HairdressInfoID{get;set;}
         
         public string map_data { get; set; }

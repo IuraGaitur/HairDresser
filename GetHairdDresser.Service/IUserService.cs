@@ -64,5 +64,19 @@ namespace GetHairdDresser.Service
         /// <returns>A bool what specify if passed with success</returns>
         [OperationContract]
         bool SetUserType(User user, string userType);
+        /// <summary>
+        /// Get all hairdressers
+        /// </summary>
+        /// <returns>a list with haidressers without details</returns>
+        [OperationContract]
+        List<User> GetAllHairdress();
+        /// <summary>
+        /// Get all hairdressers
+        /// </summary>
+        /// <param name="location">user location</param>
+        /// <returns>return list of hairdress only from a location</returns>
+        [OperationContract]
+        List<User> GetAllHaidressLocation(string location);
+
     }
 }

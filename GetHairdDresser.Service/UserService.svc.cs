@@ -56,5 +56,16 @@ namespace GetHairdDresser.Service
         }
 
 
+
+
+        public List<User> GetAllHairdress()
+        {
+            return myUser.GetAllHairdress();
+        }
+
+        public List<User> GetAllHaidressLocation(string location)
+        {
+            return myUser.GetAllHaidressLocation(location);
+        }
     }
 }

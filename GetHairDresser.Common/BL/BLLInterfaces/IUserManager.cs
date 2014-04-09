@@ -55,6 +55,18 @@ namespace GetHairDresser.Common.BLLInterfaces
         /// <param name="hairdress">Type of user:hairdress or client</param>
         /// <returns>A bool what specify if passed with success</returns>
         bool SetUserType(User user,string hairdress);
+        /// <summary>
+        /// Get all hairdressers
+        /// </summary>
+        /// <returns>a list with haidressers without details</returns>
+        List<User> GetAllHairdress();
+        /// <summary>
+        /// Get all hairdressers
+        /// </summary>
+        /// <param name="location">user location</param>
+        /// <returns>return list of hairdress only from a location</returns>
+        List<User> GetAllHaidressLocation(string location);
+
 
     }
 }

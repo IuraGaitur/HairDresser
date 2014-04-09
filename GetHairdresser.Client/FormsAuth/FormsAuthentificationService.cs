@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GetHairDresser.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,12 @@ namespace GetHairdresser.Client.FormsAuth
     {
         private const string AuthCookieName = "AuthCookie";
         private IAccountRepository repository;
-        private UserServices.User _currentUser;
+        private string _currentUserGuid;
+
+        public FormsAuthentificationService()
+        {
+
+        }
 
         public FormsAuthentificationService(IAccountRepository repository)
         {
@@ -18,34 +24,30 @@ namespace GetHairdresser.Client.FormsAuth
         }
 
 
-        public void Login(UserServices.User user, bool rememberMe)
+        public void Login(User user, bool rememberMe)
         {
             DateTime expiresDate = DateTime.Now.AddMinutes(30);
             if (rememberMe)
                 expiresDate.AddDays(10);
             FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
-               1,user.firstName,DateTime.Now,expiresDate,rememberMe,user.UserId.ToString());
+               1, user.UserGuid.ToString(), DateTime.Now, expiresDate, rememberMe, user.UserGuid.ToString());
             string EncryptedTicket = FormsAuthentication.Encrypt(ticket);
-            SetValue(AuthCookieName,null,expiresDate);
-            _currentUser = user;
+            SetValue(AuthCookieName,user.UserGuid.ToString(),expiresDate);
+            _currentUserGuid = user.UserGuid.ToString();
 
         }
 
         public void Logoff()
         {
-            SetValue(AuthCookieName,null,DateTime.Now.AddYears(-1);
-            _currentUser = null;
+            SetValue(AuthCookieName,null,DateTime.Now.AddYears(-1));
+            _currentUserGuid = null;
         }
 
-        public string GeneratePassword(string pass, string salt)
-        {
-            return null;
-        }
 
-        public UserServices.User CurrentUser
+        public string CurrentUser
         {
-            get { 
-                 if(_currentUser == null)
+            get {
+                if (_currentUserGuid == null)
                  {
                     try
                     {
@@ -53,16 +55,16 @@ namespace GetHairdresser.Client.FormsAuth
                         if(cookie != null && !String.IsNullOrEmpty(cookie.ToString()))
                         {
                             var ticket = FormsAuthentication.Decrypt(cookie.ToString());
-                            _currentUser = repository.GetUserByGuid(ticket.Name.ToString());
+                            _currentUserGuid = ticket.Name;
 
                         }
                     }
                     catch(Exception e)
                     {
-                        _currentUser = null;
+                        _currentUserGuid = null;
                     }
                  }
-                 return _currentUser;
+                return _currentUserGuid;
                 }
         }
         public static void SetValue(string cookieName,string cookieObject,DateTime dateStoreTo)
@@ -79,5 +81,7 @@ namespace GetHairdresser.Client.FormsAuth
             HttpContext.Current.Response.SetCookie(cookie);
 
         }
+
+
     }
 }

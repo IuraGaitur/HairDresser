@@ -1,15 +1,21 @@
-﻿@{string userSettings = null;
-  if (Request.Cookies["Client gui"] != null)
-  {
-   if (Request.Cookies["Client gui"]["guid"] != null)
-    { 
-     userSettings = Request.Cookies["Client gui"]["guid"]; 
-    }
-   }
-  }
-@if (userSettings !=null) {
+﻿
+@{
+    GetHairdresser.Client.FormsAuth.AuthentificManager manager = new GetHairdresser.Client.FormsAuth.AuthentificManager();
+    GetHairDresser.Common.User user;
+}
+
+
+@if (manager.IsAuthenticated) {
     <text>
-       @* Hello, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!*@
+        @{
+            using (GetHairdresser.Client.UserService.UserServiceClient serviceUser = new GetHairdresser.Client.UserService.UserServiceClient())
+            {
+
+                user = serviceUser.GetUserData(new Guid(manager.AuthGuid));   
+
+            }
+        }
+        Hello, @Html.ActionLink("Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
             @Html.AntiForgeryToken()
             <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>

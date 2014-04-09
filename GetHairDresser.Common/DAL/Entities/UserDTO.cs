@@ -35,6 +35,10 @@ namespace GetHairDresser.Common.DAL.Entities
         
         public virtual List<JobAppointmentDTO> JobAppointments { get; set; }
 
+        public virtual List<MessageDTO> receivedListMessages { get; set; }
+
+        public virtual List<MessageDTO> sendListMessages { get; set; }
+
         
         public string typeClient { get; set; }
 
@@ -43,6 +47,9 @@ namespace GetHairDresser.Common.DAL.Entities
 
         
         public Guid UserGuid { get; set; }
+
+        [Required]
+        public virtual HairdresInfoDTO hairdressInfo { get; set; }
 
 
     }

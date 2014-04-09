@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="UserService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost/GetHairDresser.Service/UserService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost/GetHairDresser.Service/UserService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost/GetHairDresser.Service/UserService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GetHairDresser.Common" />
+      <xsd:import schemaLocation="http://localhost/GetHairDresser.Service/UserService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/GetHairDresser.Common.Entities" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IUserService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_Register_InputMessage">
+    <wsdl:part name="parameters" element="tns:Register" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_Register_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetUserData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserData" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetUserData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetUserDataByFacebook_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserDataByFacebook" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetUserDataByFacebook_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserDataByFacebookResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_EditData_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditData" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_EditData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetUserType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserType" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetUserType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_SetUserType_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetUserType" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_SetUserType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetUserTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetAllHairdress_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllHairdress" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetAllHairdress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllHairdressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetAllHaidressLocation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllHaidressLocation" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetAllHaidressLocation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllHaidressLocationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IUserService">
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/Login" message="tns:IUserService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/LoginResponse" message="tns:IUserService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/Register" message="tns:IUserService_Register_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/RegisterResponse" message="tns:IUserService_Register_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUserData" message="tns:IUserService_GetUserData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetUserDataResponse" message="tns:IUserService_GetUserData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDataByFacebook">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUserDataByFacebook" message="tns:IUserService_GetUserDataByFacebook_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetUserDataByFacebookResponse" message="tns:IUserService_GetUserDataByFacebook_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/EditData" message="tns:IUserService_EditData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/EditDataResponse" message="tns:IUserService_EditData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUserType" message="tns:IUserService_GetUserType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetUserTypeResponse" message="tns:IUserService_GetUserType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetUserType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/SetUserType" message="tns:IUserService_SetUserType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/SetUserTypeResponse" message="tns:IUserService_SetUserType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllHairdress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetAllHairdress" message="tns:IUserService_GetAllHairdress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetAllHairdressResponse" message="tns:IUserService_GetAllHairdress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllHaidressLocation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetAllHaidressLocation" message="tns:IUserService_GetAllHaidressLocation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetAllHaidressLocationResponse" message="tns:IUserService_GetAllHaidressLocation_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IUserService" type="tns:IUserService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IUserService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <soap:operation soapAction="http://tempuri.org/IUserService/Register" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserData">
+      <soap:operation soapAction="http://tempuri.org/IUserService/GetUserData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDataByFacebook">
+      <soap:operation soapAction="http://tempuri.org/IUserService/GetUserDataByFacebook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditData">
+      <soap:operation soapAction="http://tempuri.org/IUserService/EditData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserType">
+      <soap:operation soapAction="http://tempuri.org/IUserService/GetUserType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUserType">
+      <soap:operation soapAction="http://tempuri.org/IUserService/SetUserType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllHairdress">
+      <soap:operation soapAction="http://tempuri.org/IUserService/GetAllHairdress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllHaidressLocation">
+      <soap:operation soapAction="http://tempuri.org/IUserService/GetAllHaidressLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserService">
+    <wsdl:port name="BasicHttpBinding_IUserService" binding="tns:BasicHttpBinding_IUserService">
+      <soap:address location="http://localhost/GetHairDresser.Service/UserService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

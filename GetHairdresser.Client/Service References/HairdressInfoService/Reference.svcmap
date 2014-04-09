@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="65872a56-9f0a-4ab9-ae8b-e9d2c2f72e41" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/GetHairDresser.Service/HairdressInfoService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="HairdressInfoService.xsd" MetadataType="Schema" ID="8b77fe16-ef1e-4882-a777-693f7bd2c74c" SourceId="1" SourceUrl="http://localhost/GetHairDresser.Service/HairdressInfoService.svc?xsd=xsd3" />
+    <MetadataFile FileName="HairdressInfoService1.xsd" MetadataType="Schema" ID="50d49725-5e17-46d6-9cc4-7c2de050800e" SourceId="1" SourceUrl="http://localhost/GetHairDresser.Service/HairdressInfoService.svc?xsd=xsd2" />
+    <MetadataFile FileName="HairdressInfoService2.xsd" MetadataType="Schema" ID="651af75b-d5c8-4d3c-85c7-016534439285" SourceId="1" SourceUrl="http://localhost/GetHairDresser.Service/HairdressInfoService.svc?xsd=xsd1" />
+    <MetadataFile FileName="HairdressInfoService3.xsd" MetadataType="Schema" ID="e41a4183-6e7d-482a-9088-5b244290649f" SourceId="1" SourceUrl="http://localhost/GetHairDresser.Service/HairdressInfoService.svc?xsd=xsd0" />
+    <MetadataFile FileName="HairdressInfoService.wsdl" MetadataType="Wsdl" ID="86460320-5505-4b3d-a39e-9aee4fde317e" SourceId="1" SourceUrl="http://localhost/GetHairDresser.Service/HairdressInfoService.svc?wsdl" />
+    <MetadataFile FileName="HairdressInfoService.disco" MetadataType="Disco" ID="688f72d6-7d31-4466-a7f2-c72b54823744" SourceId="1" SourceUrl="http://localhost/GetHairDresser.Service/HairdressInfoService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

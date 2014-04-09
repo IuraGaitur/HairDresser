@@ -1,4 +1,5 @@
-﻿using GetHairdresser.Client.UserServices;
+﻿using GetHairdresser.Client.UserService;
+using GetHairDresser.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;

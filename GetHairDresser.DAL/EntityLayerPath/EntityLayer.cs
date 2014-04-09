@@ -296,7 +296,8 @@ namespace GetHairDresser.DAL.EntityLayerPath
         public HairdresInfoDTO GetHairdressInfo(int id)
         {
             var db = new EntityLayerDB();
-            HairdresInfoDTO info = db.infoHairdress.First(x => x.HairdressID.UserId == id);
+            var item = db.infoHairdress.ToList();
+            HairdresInfoDTO info = db.infoHairdress.FirstOrDefault(x => x.HairdressID.UserId == id);
             return info;
         }
 
@@ -309,8 +310,22 @@ namespace GetHairDresser.DAL.EntityLayerPath
         }
 
 
+        public List<UserDTO> GetAllHairdress()
+        {
+            var db = new EntityLayerDB();
+            List<UserDTO> hairdress = db.users.Where(x => x.typeClient == "hairdress").ToList();
+            foreach (UserDTO user in hairdress)
+            {
+                user.hairdressInfo = GetHairdressInfo(user.UserId);
+            }
+            return hairdress;
+        }
 
-
-      
+        public List<UserDTO> GetAllHaidressLocation(string location)
+        {
+            var db = new EntityLayerDB();
+            List<UserDTO> hairdress = db.users.Where(x => (x.typeClient == "hairdress" &&  x.location == location)).ToList();
+            return hairdress;
+        }
     }
 }

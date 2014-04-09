@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using System.ComponentModel.DataAnnotations;
+using GetHairDresser.Common.Entities;
 
 namespace GetHairDresser.Common
 {
@@ -37,6 +38,12 @@ namespace GetHairDresser.Common
         public virtual List<JobAppointment> JobAppointments { get; set; }
 
         [DataMember]
+        public virtual List<Message> receivedListMessages { get; set; }
+
+        [DataMember]
+        public virtual List<Message> sendListMessages { get; set; }
+
+        [DataMember]
         public string typeClient { get; set; }
 
         [DataMember]
@@ -45,6 +52,9 @@ namespace GetHairDresser.Common
         [DataMember]
         public Guid UserGuid { get; set; }
 
+        [DataMember]
+        [Required]
+        public virtual HairdresInfo hairdressInfo { get; set; }
 
     }
 }

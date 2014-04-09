@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="JobAppointmentsService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost/GetHairDresser.Service/JobAppointmentsService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost/GetHairDresser.Service/JobAppointmentsService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost/GetHairDresser.Service/JobAppointmentsService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GetHairDresser.Common" />
+      <xsd:import schemaLocation="http://localhost/GetHairDresser.Service/JobAppointmentsService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/GetHairDresser.Common.Entities" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IJobAppointmentsService_AddJobAppointment_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddJobAppointment" />
+  </wsdl:message>
+  <wsdl:message name="IJobAppointmentsService_AddJobAppointment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddJobAppointmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJobAppointmentsService_EditJobAppointment_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditJobAppointment" />
+  </wsdl:message>
+  <wsdl:message name="IJobAppointmentsService_EditJobAppointment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditJobAppointmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJobAppointmentsService_DeleteJobAppointment_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteJobAppointment" />
+  </wsdl:message>
+  <wsdl:message name="IJobAppointmentsService_DeleteJobAppointment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteJobAppointmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJobAppointmentsService_GetJobAppointmentsByDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobAppointmentsByDate" />
+  </wsdl:message>
+  <wsdl:message name="IJobAppointmentsService_GetJobAppointmentsByDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobAppointmentsByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJobAppointmentsService_GetJobAppointments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobAppointments" />
+  </wsdl:message>
+  <wsdl:message name="IJobAppointmentsService_GetJobAppointments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobAppointmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJobAppointmentsService_GetTypedJobAppointmentsByDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTypedJobAppointmentsByDate" />
+  </wsdl:message>
+  <wsdl:message name="IJobAppointmentsService_GetTypedJobAppointmentsByDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTypedJobAppointmentsByDateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IJobAppointmentsService">
+    <wsdl:operation name="AddJobAppointment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJobAppointmentsService/AddJobAppointment" message="tns:IJobAppointmentsService_AddJobAppointment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJobAppointmentsService/AddJobAppointmentResponse" message="tns:IJobAppointmentsService_AddJobAppointment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditJobAppointment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJobAppointmentsService/EditJobAppointment" message="tns:IJobAppointmentsService_EditJobAppointment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJobAppointmentsService/EditJobAppointmentResponse" message="tns:IJobAppointmentsService_EditJobAppointment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteJobAppointment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJobAppointmentsService/DeleteJobAppointment" message="tns:IJobAppointmentsService_DeleteJobAppointment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJobAppointmentsService/DeleteJobAppointmentResponse" message="tns:IJobAppointmentsService_DeleteJobAppointment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJobAppointmentsByDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJobAppointmentsService/GetJobAppointmentsByDate" message="tns:IJobAppointmentsService_GetJobAppointmentsByDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJobAppointmentsService/GetJobAppointmentsByDateResponse" message="tns:IJobAppointmentsService_GetJobAppointmentsByDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJobAppointments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJobAppointmentsService/GetJobAppointments" message="tns:IJobAppointmentsService_GetJobAppointments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJobAppointmentsService/GetJobAppointmentsResponse" message="tns:IJobAppointmentsService_GetJobAppointments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTypedJobAppointmentsByDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJobAppointmentsService/GetTypedJobAppointmentsByDate" message="tns:IJobAppointmentsService_GetTypedJobAppointmentsByDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJobAppointmentsService/GetTypedJobAppointmentsByDateResponse" message="tns:IJobAppointmentsService_GetTypedJobAppointmentsByDate_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IJobAppointmentsService" type="tns:IJobAppointmentsService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddJobAppointment">
+      <soap:operation soapAction="http://tempuri.org/IJobAppointmentsService/AddJobAppointment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditJobAppointment">
+      <soap:operation soapAction="http://tempuri.org/IJobAppointmentsService/EditJobAppointment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteJobAppointment">
+      <soap:operation soapAction="http://tempuri.org/IJobAppointmentsService/DeleteJobAppointment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobAppointmentsByDate">
+      <soap:operation soapAction="http://tempuri.org/IJobAppointmentsService/GetJobAppointmentsByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobAppointments">
+      <soap:operation soapAction="http://tempuri.org/IJobAppointmentsService/GetJobAppointments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTypedJobAppointmentsByDate">
+      <soap:operation soapAction="http://tempuri.org/IJobAppointmentsService/GetTypedJobAppointmentsByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JobAppointmentsService">
+    <wsdl:port name="BasicHttpBinding_IJobAppointmentsService" binding="tns:BasicHttpBinding_IJobAppointmentsService">
+      <soap:address location="http://localhost/GetHairDresser.Service/JobAppointmentsService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

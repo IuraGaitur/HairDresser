@@ -1,4 +1,6 @@
-﻿using GetHairdresser.Client.Models;
+﻿using GetHairdresser.Client.FormsAuth;
+using GetHairdresser.Client.Models;
+using GetHairDresser.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,22 +12,23 @@ namespace GetHairdresser.Client.Controllers
 {
     public class ClientController : Controller
     {
+        AuthentificManager authentifManager = new AuthentificManager();
         //
         // GET: /Client/
         UserProfile model = null;
 
         public ActionResult Index()
         {
-            using (UserServices.UserServiceClient client = new UserServices.UserServiceClient())
+            using (UserService.UserServiceClient client = new UserService.UserServiceClient())
             {
 
                 AccountController controller = new AccountController();
-                string guid = controller.GetGuidIdFromCookies();
-                UserServices.User user = client.GetUserData(new Guid(guid));
+                string guid = authentifManager.AuthGuid;
+                User user = client.GetUserData(new Guid(guid));
                 model = AccountController.UserProfileMap(user);
             }
 
-            return View(model);
+            return View("ClientPage", model);
         }
 
     }

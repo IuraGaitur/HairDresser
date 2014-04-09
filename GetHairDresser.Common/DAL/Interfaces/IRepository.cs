@@ -45,6 +45,7 @@ namespace GetHairDresser.Common.Interfaces
         /// Get all users from db
         /// </summary>
         /// <returns>List with UserDTO instances</returns>
+        
          List<UserDTO> GetUsers();
         /// <summary>
         /// Search a user/users
@@ -52,6 +53,18 @@ namespace GetHairDresser.Common.Interfaces
         /// <param name="name">List of users instances</param>
         /// <returns></returns>
          List<UserDTO> SearchUsers(string name);
+
+        /// <summary>
+        /// Get all hairdressers
+        /// </summary>
+        /// <returns>a list with haidressers without details</returns>
+        List<UserDTO> GetAllHairdress();
+        /// <summary>
+        /// Get all hairdressers
+        /// </summary>
+        /// <param name="location">user location</param>
+        /// <returns>return list of hairdress only from a location</returns>
+        List<UserDTO> GetAllHaidressLocation(string location);
 
 
         //JobAppointment

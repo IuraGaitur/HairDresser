@@ -1,5 +1,6 @@
 ﻿using GetHairdresser.Client.FormsAuth;
-using GetHairdresser.Client.UserServices;
+using GetHairdresser.Client.UserService;
+using GetHairDresser.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace GetHairdresser.Client.Controllers
             _AuthenticationService = DependencyResolver.Current.GetService<IAuthentificationService>();
         }
 
-        public User CurrentUser
+        public string CurrentUser
         {
             get
             {

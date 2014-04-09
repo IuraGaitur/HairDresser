@@ -103,5 +103,36 @@ namespace GetHairDresser.BL
             return false;
 
         }
+        public List<User> GetAllHairdress()
+        {
+
+            List<User> my_users = new List<User>();
+            List<UserDTO> temp_users  = repository.GetAllHairdress();
+            foreach (UserDTO user in temp_users)
+            {
+                my_users.Add(mapper.MapUser(user));
+            }
+
+
+            return my_users;
+        }
+
+
+
+
+
+
+        public List<User> GetAllHaidressLocation(string location)
+        {
+            List<User> my_users = null;
+            List<UserDTO> temp_users = repository.GetAllHaidressLocation(location);
+            foreach (UserDTO user in temp_users)
+            {
+                my_users.Add(mapper.MapUser(user));
+            }
+
+
+            return my_users;
+        }
     }
 }

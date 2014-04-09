@@ -1,6 +1,8 @@
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\AutoMapper.Net4.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\GetHairdresser.Client.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\GetHairdresser.Client.pdb
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\Antlr3.Runtime.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\AutoMapper.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\DotNetOpenAuth.AspNet.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\DotNetOpenAuth.Core.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\DotNetOpenAuth.OAuth.Consumer.dll
@@ -10,6 +12,7 @@ C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdre
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\EntityFramework.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\EntityFramework.SqlServer.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\Facebook.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\GetHairDresser.Common.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\Microsoft.Web.WebPages.OAuth.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\Newtonsoft.Json.dll
@@ -26,6 +29,8 @@ C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdre
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\WebGrease.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\WebMatrix.Data.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\WebMatrix.WebData.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\GetHairDresser.Common.pdb
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\AutoMapper.xml
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\EntityFramework.xml
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\EntityFramework.SqlServer.xml
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\Facebook.xml
@@ -48,9 +53,6 @@ C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdre
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\DotNetOpenAuth.OAuth.xml
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\DotNetOpenAuth.OpenId.xml
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\obj\Debug\GetHairDresser.Client.csprojResolveAssemblyReference.cache
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\obj\Debug\GetHairdresser.Client.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\obj\Debug\GetHairdresser.Client.pdb
-C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\obj\Debug\GetHairDresser.Client.csprojResolveAssemblyReference.cache
-C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\AutoMapper.Net4.dll
-C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\AutoMapper.dll
-C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\AutoMapper.xml

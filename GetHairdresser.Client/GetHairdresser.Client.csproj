@@ -172,6 +172,7 @@
   <ItemGroup>
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\CustomViewEngine.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -183,6 +184,7 @@
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="FormsAuth\AccountRepository.cs" />
     <Compile Include="FormsAuth\AuthenticateAttribute.cs" />
+    <Compile Include="FormsAuth\AuthentificManager.cs" />
     <Compile Include="FormsAuth\FormsAuthentificationService.cs" />
     <Compile Include="FormsAuth\IAccountRepository.cs" />
     <Compile Include="FormsAuth\IAuthentificationService.cs" />
@@ -195,22 +197,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecurityProvider\SecurityMembershipProvider.cs" />
     <Compile Include="SecurityProvider\SecurityRoleProvider.cs" />
-    <Compile Include="Service References\HairdressInfoServices\Reference.cs">
+    <Compile Include="Service References\HairdressInfoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\JobAppointmentsServices\Reference.cs">
+    <Compile Include="Service References\JobAppointmentsService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\MessagesServices\Reference.cs">
+    <Compile Include="Service References\MessagesService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\UserServices\Reference.cs">
+    <Compile Include="Service References\UserService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -338,6 +340,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Properties\DataSources\GetHairDresser.Common.Entities.HairdresInfo.datasource" />
+    <Content Include="Properties\DataSources\GetHairDresser.Common.Entities.Message.datasource" />
+    <Content Include="Properties\DataSources\GetHairDresser.Common.JobAppointment.datasource" />
+    <Content Include="Properties\DataSources\GetHairDresser.Common.User.datasource" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
@@ -354,46 +360,34 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Service References\HairdressInfoServices\GetHairdresser.Client.HairdressInfoServices.HairdresInfo.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\HairdressInfoServices\HairdressInfoService.disco" />
-    <None Include="Service References\HairdressInfoServices\configuration91.svcinfo" />
-    <None Include="Service References\HairdressInfoServices\configuration.svcinfo" />
-    <None Include="Service References\HairdressInfoServices\Reference.svcmap">
+    <None Include="Service References\HairdressInfoService\HairdressInfoService.disco" />
+    <None Include="Service References\HairdressInfoService\configuration91.svcinfo" />
+    <None Include="Service References\HairdressInfoService\configuration.svcinfo" />
+    <None Include="Service References\HairdressInfoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Service References\JobAppointmentsServices\GetHairdresser.Client.JobAppointmentsServices.JobAppointment.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\JobAppointmentsServices\JobAppointmentsService.disco" />
-    <None Include="Service References\JobAppointmentsServices\configuration91.svcinfo" />
-    <None Include="Service References\JobAppointmentsServices\configuration.svcinfo" />
-    <None Include="Service References\JobAppointmentsServices\Reference.svcmap">
+    <None Include="Service References\JobAppointmentsService\JobAppointmentsService.disco" />
+    <None Include="Service References\JobAppointmentsService\configuration91.svcinfo" />
+    <None Include="Service References\JobAppointmentsService\configuration.svcinfo" />
+    <None Include="Service References\JobAppointmentsService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Service References\MessagesServices\GetHairdresser.Client.MessagesServices.Message.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\MessagesServices\MessagesService.disco" />
-    <None Include="Service References\MessagesServices\configuration91.svcinfo" />
-    <None Include="Service References\MessagesServices\configuration.svcinfo" />
-    <None Include="Service References\MessagesServices\Reference.svcmap">
+    <None Include="Service References\MessagesService\MessagesService.disco" />
+    <None Include="Service References\MessagesService\configuration91.svcinfo" />
+    <None Include="Service References\MessagesService\configuration.svcinfo" />
+    <None Include="Service References\MessagesService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Service References\UserServices\GetHairdresser.Client.UserServices.User.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\UserServices\UserService.disco" />
-    <None Include="Service References\UserServices\configuration91.svcinfo" />
-    <None Include="Service References\UserServices\configuration.svcinfo" />
-    <None Include="Service References\UserServices\Reference.svcmap">
+    <Content Include="Service References\UserService\UserService.disco" />
+    <Content Include="Service References\UserService\configuration91.svcinfo" />
+    <Content Include="Service References\UserService\configuration.svcinfo" />
+    <Content Include="Service References\UserService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -417,13 +411,9 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
@@ -438,50 +428,56 @@
     <Content Include="Views\Client\HairdresserPage.cshtml" />
     <Content Include="Views\Client\ClientPage.cshtml" />
     <Content Include="Views\Hairdress\HairDressProfile.cshtml" />
-    <None Include="Service References\UserServices\UserService.wsdl" />
-    <None Include="Service References\JobAppointmentsServices\JobAppointmentsService.wsdl" />
-    <None Include="Service References\HairdressInfoServices\HairdressInfoService.wsdl" />
-    <None Include="Service References\HairdressInfoServices\HairdressInfoService.xsd">
+    <None Include="Service References\JobAppointmentsService\JobAppointmentsService.wsdl" />
+    <None Include="Service References\HairdressInfoService\HairdressInfoService.wsdl" />
+    <None Include="Service References\HairdressInfoService\HairdressInfoService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\HairdressInfoServices\HairdressInfoService1.xsd">
+    <None Include="Service References\HairdressInfoService\HairdressInfoService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\HairdressInfoServices\HairdressInfoService2.xsd">
+    <None Include="Service References\HairdressInfoService\HairdressInfoService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\HairdressInfoServices\HairdressInfoService3.xsd">
+    <None Include="Service References\HairdressInfoService\HairdressInfoService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\JobAppointmentsServices\JobAppointmentsService.xsd">
+    <None Include="Service References\JobAppointmentsService\JobAppointmentsService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\JobAppointmentsServices\JobAppointmentsService1.xsd">
+    <None Include="Service References\JobAppointmentsService\JobAppointmentsService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\JobAppointmentsServices\JobAppointmentsService2.xsd">
+    <None Include="Service References\JobAppointmentsService\JobAppointmentsService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MessagesServices\MessagesService.wsdl" />
-    <None Include="Service References\MessagesServices\MessagesService.xsd">
+    <None Include="Service References\JobAppointmentsService\JobAppointmentsService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MessagesServices\MessagesService1.xsd">
+    <None Include="Service References\MessagesService\MessagesService.wsdl" />
+    <None Include="Service References\MessagesService\MessagesService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MessagesServices\MessagesService2.xsd">
+    <None Include="Service References\MessagesService\MessagesService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MessagesServices\MessagesService3.xsd">
+    <None Include="Service References\MessagesService\MessagesService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UserServices\UserService.xsd">
+    <None Include="Service References\MessagesService\MessagesService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UserServices\UserService1.xsd">
+    <Content Include="Service References\UserService\UserService.wsdl" />
+    <None Include="Service References\UserService\UserService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UserServices\UserService11.xsd">
+    <None Include="Service References\UserService\UserService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserService\UserService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserService\UserService3.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -497,10 +493,16 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\HairdressInfoServices\" />
-    <WCFMetadataStorage Include="Service References\JobAppointmentsServices\" />
-    <WCFMetadataStorage Include="Service References\MessagesServices\" />
-    <WCFMetadataStorage Include="Service References\UserServices\" />
+    <ProjectReference Include="..\GetHairDresser.Common\GetHairDresser.Common.csproj">
+      <Project>{872ab91a-01b9-4e50-b5e2-48a60f1d7a1c}</Project>
+      <Name>GetHairDresser.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\HairdressInfoService\" />
+    <WCFMetadataStorage Include="Service References\JobAppointmentsService\" />
+    <WCFMetadataStorage Include="Service References\MessagesService\" />
+    <WCFMetadataStorage Include="Service References\UserService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
