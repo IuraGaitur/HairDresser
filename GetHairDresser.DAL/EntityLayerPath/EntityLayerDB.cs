@@ -30,11 +30,11 @@ namespace GetHairDresser.DAL.EntityLayerPath
         public EntityLayerDB()
             : base("name=MyDB")
         {
+            Database.SetInitializer<EntityLayerDB>(new DropCreateDatabaseIfModelChanges<EntityLayerDB>());
             var type = typeof(System.Data.Entity.SqlServer.SqlProviderServices);
-            Database.SetInitializer<EntityLayerDB>(null);
+            
+            //Database.SetInitializer<EntityLayerDB>(null);
         }
-
-
 
         public DbSet<UserDTO> users { get; set; }
         public DbSet<JobAppointmentDTO> jobAppoints { get; set; }

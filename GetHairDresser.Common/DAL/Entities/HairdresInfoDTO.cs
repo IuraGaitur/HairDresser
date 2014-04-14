@@ -13,14 +13,19 @@ namespace GetHairDresser.Common.DAL.Entities
     public class HairdresInfoDTO
     {
         [Key, ForeignKey("HairdressID")]
-        public int HairdressInfoID{get;set;}
-        
+        public int HairdressInfoID { get; set; }
+
         public string map_data { get; set; }
-        
+
         public double rating { get; set; }
-        
+
         public string photo { get; set; }
-        
-        public virtual UserDTO HairdressID { get; set; }
+
+        public UserDTO HairdressID { get; set; }
+
+        public HairdresInfoDTO()
+        {
+            //HairdressID = new UserDTO();
+        }
     }
 }

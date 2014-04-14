@@ -48,6 +48,19 @@
   <ItemGroup>
     <Compile Include="EntityLayerPath\EntityLayer.cs" />
     <Compile Include="EntityLayerPath\EntityLayerDB.cs" />
+    <Compile Include="Migrations\201404101610285_MyDB.cs" />
+    <Compile Include="Migrations\201404101610285_MyDB.Designer.cs">
+      <DependentUpon>201404101610285_MyDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404101620038_MyDB2.cs" />
+    <Compile Include="Migrations\201404101620038_MyDB2.Designer.cs">
+      <DependentUpon>201404101620038_MyDB2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404101711312_MYDB3.cs" />
+    <Compile Include="Migrations\201404101711312_MYDB3.Designer.cs">
+      <DependentUpon>201404101711312_MYDB3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryLocator.cs" />
     <Compile Include="Settings.Designer.cs">
@@ -74,6 +87,17 @@
       <Project>{872ab91a-01b9-4e50-b5e2-48a60f1d7a1c}</Project>
       <Name>GetHairDresser.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201404101610285_MyDB.resx">
+      <DependentUpon>201404101610285_MyDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404101620038_MyDB2.resx">
+      <DependentUpon>201404101620038_MyDB2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404101711312_MYDB3.resx">
+      <DependentUpon>201404101711312_MYDB3.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

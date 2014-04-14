@@ -2,7 +2,27 @@
     
     GetHairdresser.Client.UserService.UserServiceClient service = new GetHairdresser.Client.UserService.UserServiceClient();
     GetHairDresser.Common.User [] items = service.GetAllHairdress();
+    
+    
+    
     List<GetHairDresser.Common.User> list = null;
+    GetHairDresser.Common.User user = new GetHairDresser.Common.User();
+    user.firstName = "iura";
+    user.lastName = "vasea";
+    user.typeClient = "hairdress";
+    user.age = 16;
+    user.email = "asdasd";
+    user.gender = "sadas";
+    user.hairdressInfo.rating = 6.5;
+    user.hairdressInfo.photo = "asd";
+    user.location = "asd";
+    user.UserGuid = new Guid("620961d7-2a0f-4dbc-9ee2-f1449be3da4f");
+    user.UserFacebook = "231312";
+    service.Register(user);
+    
+        
+    
+    
     if (items != null)
     {list = items.ToList();}
         
@@ -19,6 +39,7 @@
 <h3>The following hairdressers:</h3>
 @if(list!=null)
 {
+    service.Register(user);
 <ol class="round">
    <table class="table table-striped">
        <tr>

@@ -1,4 +1,9 @@
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.Common\bin\Debug\GetHairDresser.Common.dll.config
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.Common\bin\Debug\GetHairDresser.Common.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.Common\bin\Debug\GetHairDresser.Common.pdb
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.Common\bin\Debug\EntityFramework.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.Common\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.Common\bin\Debug\EntityFramework.xml
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.Common\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.Common\obj\Debug\GetHairDresser.Common.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.Common\obj\Debug\GetHairDresser.Common.pdb

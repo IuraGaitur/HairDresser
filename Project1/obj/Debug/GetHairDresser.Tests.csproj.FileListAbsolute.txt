@@ -17,3 +17,5 @@ C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\Project1\b
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\Project1\obj\Debug\GetHairDresser.Tests.csprojResolveAssemblyReference.cache
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\Project1\obj\Debug\Project1.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\Project1\obj\Debug\Project1.pdb
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\Project1\bin\Debug\Moq.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\Project1\bin\Debug\Moq.xml

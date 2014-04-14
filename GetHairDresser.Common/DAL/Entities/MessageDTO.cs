@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GetHairDresser.Common.DAL.Entities
 {
@@ -13,11 +14,17 @@ namespace GetHairDresser.Common.DAL.Entities
     {
         [Key]
         public int MessageID { get; set; }
-        
+
         public string text { get; set; }
-        
-        public virtual UserDTO senderID { get; set; }
-        
-        public virtual UserDTO receiverID { get; set; }
+
+        public  UserDTO senderID { get; set; }
+
+        public  UserDTO receiverID { get; set; }
+
+        public MessageDTO()
+        {
+            //senderID = new UserDTO();
+            //receiverID = new UserDTO();
+        }
     }
 }

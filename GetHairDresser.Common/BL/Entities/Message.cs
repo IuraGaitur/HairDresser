@@ -19,6 +19,12 @@ namespace GetHairDresser.Common.Entities
         [DataMember]
         public virtual User senderID { get; set; }
         [DataMember]
-        public virtual User receiverID { get; set; }
+        public  User receiverID { get; set; }
+
+         public Message()
+        {
+            senderID = new User();
+            receiverID = new User();
+        }
     }
 }

@@ -15,10 +15,15 @@ namespace GetHairDresser.Common.Entities
         [DataMember]
         public int RatingID { get; set; }
         [DataMember]
-        public virtual User userIdRating { get; set; }
+        public  User userIdRating { get; set; }
         [DataMember]
         public double totalRate { get; set; }
         [DataMember]
         public int votes { get; set; }
+
+        public Rating()
+        {
+            userIdRating = new User();
+        }
     }
 }

@@ -56,3 +56,5 @@ C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdre
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\obj\Debug\GetHairDresser.Client.csprojResolveAssemblyReference.cache
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\obj\Debug\GetHairdresser.Client.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\obj\Debug\GetHairdresser.Client.pdb
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\Moq.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairdresser.Client\bin\Moq.xml

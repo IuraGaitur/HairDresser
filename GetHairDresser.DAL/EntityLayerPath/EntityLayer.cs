@@ -15,7 +15,8 @@ namespace GetHairDresser.DAL.EntityLayerPath
     {
 
 
-        
+
+
 
         //Users
 
@@ -83,24 +84,24 @@ namespace GetHairDresser.DAL.EntityLayerPath
         public UserDTO GetUser(Guid id)
         {
             var db = new EntityLayerDB();
-            
+
             UserDTO person = db.users.FirstOrDefault(x => x.UserGuid == id);
 
             return person;
 
             //return new User()
             //{
-            //    age = person.age,
-            //    email = person.email,
-            //    firstName = person.email,
-            //    gender = person.gender,
-            //    JobAppointments = person.JobAppointments,
-            //    lastName = person.lastName,
-            //    location = person.location,
-            //    typeClient = person.typeClient,
-            //    UserFacebook = person.UserFacebook,
-            //    UserGuid = person.UserGuid,
-            //    UserId = person.UserId
+            // age = person.age,
+            // email = person.email,
+            // firstName = person.email,
+            // gender = person.gender,
+            // JobAppointments = person.JobAppointments,
+            // lastName = person.lastName,
+            // location = person.location,
+            // typeClient = person.typeClient,
+            // UserFacebook = person.UserFacebook,
+            // UserGuid = person.UserGuid,
+            // UserId = person.UserId
             //};
         }
 
@@ -124,18 +125,18 @@ namespace GetHairDresser.DAL.EntityLayerPath
         {
             var db = new EntityLayerDB();
             List<UserDTO> users = (from user in db.users
-                                where user.firstName.Contains(name) || user.lastName.Contains(name)
-                                select new UserDTO()
-                                { 
-                                    email = user.email,
-                                    firstName = user.firstName,
-                                    JobAppointments = user.JobAppointments,
-                                    lastName = user.lastName,
-                                    location = user.location,
-                                    typeClient = user.typeClient,
-                                    UserGuid = user.UserGuid,
-                                    UserId = user.UserId
-                                }).ToList();
+                                   where user.firstName.Contains(name) || user.lastName.Contains(name)
+                                   select new UserDTO()
+                                   {
+                                       email = user.email,
+                                       firstName = user.firstName,
+                                       JobAppointments = user.JobAppointments,
+                                       lastName = user.lastName,
+                                       location = user.location,
+                                       typeClient = user.typeClient,
+                                       UserGuid = user.UserGuid,
+                                       UserId = user.UserId
+                                   }).ToList();
 
             return users;
         }
@@ -147,15 +148,15 @@ namespace GetHairDresser.DAL.EntityLayerPath
         {
             var db = new EntityLayerDB();
             List<JobAppointmentDTO> jobs = (from job in db.jobAppoints
-                               where (job.Hairdresser.UserId == user.UserId && job.DateJob == date)
-                               select new JobAppointmentDTO()
-                               {
-                                   DateJob = job.DateJob,
-                                   Hairdresser = job.Hairdresser,
-                                   HourJob = job.HourJob,
-                                   JobAppID = job.JobAppID,
-                                   Status = job.Status
-                               }).ToList();
+                                            where (job.Hairdresser.UserId == user.UserId && job.DateJob == date)
+                                            select new JobAppointmentDTO()
+                                            {
+                                                DateJob = job.DateJob,
+                                                Hairdresser = job.Hairdresser,
+                                                HourJob = job.HourJob,
+                                                JobAppID = job.JobAppID,
+                                                Status = job.Status
+                                            }).ToList();
 
             return jobs;
         }
@@ -164,15 +165,15 @@ namespace GetHairDresser.DAL.EntityLayerPath
         {
             var db = new EntityLayerDB();
             List<JobAppointmentDTO> jobs = (from job in db.jobAppoints
-                                         where (job.Hairdresser.UserId == user.UserId)
-                                         select new JobAppointmentDTO()
-                                         {
-                                             DateJob = job.DateJob,
-                                             Hairdresser = job.Hairdresser,
-                                             HourJob = job.HourJob,
-                                             JobAppID = job.JobAppID,
-                                             Status = job.Status
-                                         }).ToList();
+                                            where (job.Hairdresser.UserId == user.UserId)
+                                            select new JobAppointmentDTO()
+                                            {
+                                                DateJob = job.DateJob,
+                                                Hairdresser = job.Hairdresser,
+                                                HourJob = job.HourJob,
+                                                JobAppID = job.JobAppID,
+                                                Status = job.Status
+                                            }).ToList();
 
             return jobs;
         }
@@ -181,15 +182,15 @@ namespace GetHairDresser.DAL.EntityLayerPath
         {
             var db = new EntityLayerDB();
             List<JobAppointmentDTO> jobs = (from job in db.jobAppoints
-                                         where (job.Hairdresser.UserId == user.UserId && job.Status == status)
-                                         select new JobAppointmentDTO()
-                                         {
-                                             DateJob = job.DateJob,
-                                             Hairdresser = job.Hairdresser,
-                                             HourJob = job.HourJob,
-                                             JobAppID = job.JobAppID,
-                                             Status = job.Status
-                                         }).ToList();
+                                            where (job.Hairdresser.UserId == user.UserId && job.Status == status)
+                                            select new JobAppointmentDTO()
+                                            {
+                                                DateJob = job.DateJob,
+                                                Hairdresser = job.Hairdresser,
+                                                HourJob = job.HourJob,
+                                                JobAppID = job.JobAppID,
+                                                Status = job.Status
+                                            }).ToList();
 
             return jobs;
         }
@@ -251,7 +252,7 @@ namespace GetHairDresser.DAL.EntityLayerPath
         public List<MessageDTO> GetMessagesReceived(int id)
         {
             var db = new EntityLayerDB();
-            List<MessageDTO> messageSend = db.messages.Where(x => x.receiverID.UserId ==id).ToList();
+            List<MessageDTO> messageSend = db.messages.Where(x => x.receiverID.UserId == id).ToList();
             return messageSend;
         }
 
@@ -324,7 +325,7 @@ namespace GetHairDresser.DAL.EntityLayerPath
         public List<UserDTO> GetAllHaidressLocation(string location)
         {
             var db = new EntityLayerDB();
-            List<UserDTO> hairdress = db.users.Where(x => (x.typeClient == "hairdress" &&  x.location == location)).ToList();
+            List<UserDTO> hairdress = db.users.Where(x => (x.typeClient == "hairdress" && x.location == location)).ToList();
             return hairdress;
         }
     }

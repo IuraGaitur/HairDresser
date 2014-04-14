@@ -35,13 +35,13 @@ namespace GetHairDresser.Common
         public string location { get; set; }
 
         [DataMember]
-        public virtual List<JobAppointment> JobAppointments { get; set; }
+        public  List<JobAppointment> JobAppointments { get; set; }
 
         [DataMember]
-        public virtual List<Message> receivedListMessages { get; set; }
+        public  List<Message> receivedListMessages { get; set; }
 
         [DataMember]
-        public virtual List<Message> sendListMessages { get; set; }
+        public  List<Message> sendListMessages { get; set; }
 
         [DataMember]
         public string typeClient { get; set; }
@@ -54,7 +54,16 @@ namespace GetHairDresser.Common
 
         [DataMember]
         [Required]
-        public virtual HairdresInfo hairdressInfo { get; set; }
+        public  HairdresInfo hairdressInfo { get; set; }
+
+         public User()
+        {
+            hairdressInfo = new HairdresInfo();
+            JobAppointments = new List<JobAppointment>();
+            receivedListMessages = new List<Message>();
+            sendListMessages = new List<Message>();
+        }
+
 
     }
 }

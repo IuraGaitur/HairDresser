@@ -25,6 +25,11 @@ namespace GetHairDresser.Common
         public int Status { get; set; }
 
         [DataMember]
-        public virtual User Hairdresser { get; set; }
+        public  User Hairdresser { get; set; }
+
+        public JobAppointment()
+        {
+            Hairdresser = new User();
+        }
     }
 }

@@ -2,4 +2,19 @@
     ViewBag.Title = "HairdresserPage";
 }
 
+
+
 <h2>HairdresserPage</h2>
+
+
+<div id="datepicker"></div>
+
+@section scripts
+{
+    $(function(){
+    $.datepicker.setDefaults(
+        $.extend($.datepicker.regional["en"])
+    );
+    $("datepicker").datepicker();
+    });
+}

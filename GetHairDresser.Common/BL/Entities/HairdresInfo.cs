@@ -21,6 +21,11 @@ namespace GetHairDresser.Common.Entities
         [DataMember]
         public string photo { get; set; }
         [DataMember]
-        public virtual User HairdressID { get; set; }
+        public User HairdressID { get; set; }
+
+        public HairdresInfo()
+        {
+            //HairdressID = new User();
+        }
     }
 }

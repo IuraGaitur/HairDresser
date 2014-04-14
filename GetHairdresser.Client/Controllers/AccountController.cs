@@ -15,6 +15,7 @@ using GetHairDresser.Common;
 using AutoMapper;
 using GetHairdresser.Client.FormsAuth;
 using GetHairdresser.Client.UserService;
+using GetHairDresser.Common.BL.Entities;
 
 
 namespace GetHairdresser.Client.Controllers
@@ -23,6 +24,8 @@ namespace GetHairdresser.Client.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+
+        AuthentificManager authentifManag = new AuthentificManager();
 
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -81,8 +84,6 @@ namespace GetHairdresser.Client.Controllers
                 return RedirectToAction("ExternalLoginFailure");
             }
 
-
-
             if (authentifManag.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Home");
@@ -94,10 +95,8 @@ namespace GetHairdresser.Client.Controllers
                 string accesstoken = result.ExtraData["accesstoken"].ToString();
                 var client = new Facebook.FacebookClient(accesstoken);
                 dynamic fbresult = client.Get("me");
-
-                //OAuthWebSecurity.CreateOrUpdateAccount(
+                //deserialize it
                 JavaScriptSerializer jss = new JavaScriptSerializer();
-
                 dynamic objData = jss.Deserialize<dynamic>(fbresult.ToString());
                 
 
@@ -122,15 +121,17 @@ namespace GetHairdresser.Client.Controllers
                         string userType = serviceUser.GetUserType(myUser);
                         authentifManag.Login(myUser, false);
                         ViewBag.ReturnUrl = returnUrl;
-                        if (userType == "client")
+                        if (userType == ClientCategory.Category.client.ToString())
                         {
                             return RedirectToAction("Index", "Client");
-                            //return View("~/Views/Client/ClientPage.cshtml");
                         }
-                        else if (userType == "hairdress")
+                        else if (userType == ClientCategory.Category.hairdress.ToString())
                         {
                             return RedirectToAction("Index", "Hairdress");
-                            //return View("~/Views/Hairdress/HairDressProfile.cshtml");
+                        }
+                        else
+                        {
+                            return null;
                         }
                     }
                 }
@@ -147,26 +148,10 @@ namespace GetHairdresser.Client.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ExternalLoginConfirmation(UserProfile model, string returnUrl)
         {
-            
-            string provider = null;
-            string providerUserId = null;
-            
-            if (User.Identity.IsAuthenticated || !OAuthWebSecurity.TryDeserializeProviderUserId(model.ExternalLoginData, out provider, out providerUserId))
-            {
-                return RedirectToAction("Manage");
-            }
-
             if (ModelState.IsValid)
             {
-       
-                //OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
-                //OAuthWebSecurity.Login(provider, providerUserId, createPersistentCookie: false);
-
-                return View("SetExternalCategory", model);
-                
+                return View("SetExternalCategory", model);   
             }
-
-            ViewBag.ProviderDisplayName = OAuthWebSecurity.GetOAuthClientData(provider).DisplayName;
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
@@ -175,26 +160,23 @@ namespace GetHairdresser.Client.Controllers
         [AllowAnonymous]
         public ActionResult SetExternalCategory(UserProfile model,string typeClient)
         {
-            AuthentificManager authentifManag = new AuthentificManager();
+            
            
             using (UserServiceClient serviceUser = new UserServiceClient())
             {
                 GetHairDresser.Common.User register_user = UserMap(model);
-                register_user.UserGuid = new Guid();
+                register_user.UserGuid = Guid.NewGuid();
                 authentifManag.Login(UserMap(model), false);
-                if (typeClient == "client")
+                register_user.typeClient = typeClient;
+                serviceUser.Register(register_user);
+
+                if (typeClient == ClientCategory.Category.client.ToString())
                 {
-                    register_user.typeClient = typeClient;
-                    serviceUser.Register(register_user);
                     return RedirectToAction("Index", "Client");
-                    //return View("~/Views/Client/ClientPage.cshtml");
                 }
-                else if (typeClient == "hairdresser")
+                else if (typeClient == ClientCategory.Category.hairdress.ToString())
                 {
-                    serviceUser.SetUserType(register_user,typeClient);
-                    serviceUser.Register(register_user);
                     return RedirectToAction("Index", "Hairdress");
-                    //return View("~/Views/Hairdress/HairDressProfile.cshtml");
                 }
             }
             return View();

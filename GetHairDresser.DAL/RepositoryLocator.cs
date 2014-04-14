@@ -11,6 +11,7 @@ namespace GetHairDresser.DAL
     public class RepositoryLocator
     {
         private static IRepository repository;
+
         private RepositoryLocator()
         {}
 

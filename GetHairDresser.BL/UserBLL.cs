@@ -17,21 +17,24 @@ namespace GetHairDresser.BL
     public class UserBLL:IUserManage
     {
         IMapperUser mapper;
-        
-        public UserBLL()
+        IRepository repository;
+        public UserBLL(IRepository repository)
         {
             mapper = new UserMapper();
-            
+            this.repository = repository;            
         }
 
-        IRepository repository = RepositoryLocator.GetRepository();
+        //IRepository repository = RepositoryLocator.GetRepository();
         
         public bool Login(User user)
         {
             UserDTO temp_user = new UserDTO();
+
             temp_user = repository.GetUserByFacebook(user.UserFacebook);
+
             if (temp_user == null)
                 return false;
+
             return true;
         }
 

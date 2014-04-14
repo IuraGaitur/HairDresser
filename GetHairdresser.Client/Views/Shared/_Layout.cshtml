@@ -8,6 +8,8 @@
         @Styles.Render("~/Content/css")
         @Styles.Render("~/Content/themes/boots")
         @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+
         
         
     </head>
@@ -47,7 +49,7 @@
             </div>
         </footer>
 
-        @Scripts.Render("~/bundles/jquery")
+        
         @RenderSection("scripts", required: false)
         <script type="text/javascript">
         $( document ).ready(function() {
