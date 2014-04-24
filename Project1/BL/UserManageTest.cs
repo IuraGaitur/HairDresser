@@ -26,6 +26,12 @@ namespace GetHairDresser.Tests
             UserFacebook = "132156423156",
             UserGuid = new Guid(),
         };
+
+        [TestInitialize]
+        void SetUp()
+        {
+
+        }
         
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
@@ -88,11 +94,18 @@ namespace GetHairDresser.Tests
 
         }
         [TestMethod]
-        public void GetUserByFacebookTest()
+        public void GetUserDataWhenEmptyTest()
         {
+            Guid guid = new Guid(" ");
+            Mock<IRepository> repositoryMock = new Mock<IRepository>();
+
+            UserBLL userLogic = new UserBLL(repositoryMock.Object);
+            var userdata = userLogic.GetUserData(guid);
+            Assert.Equals(userdata, user); // todo
 
 
         }
+
         [TestMethod]
         public void EditDataTest()
         {

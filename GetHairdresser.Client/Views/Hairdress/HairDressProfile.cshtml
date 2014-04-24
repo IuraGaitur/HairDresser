@@ -1,16 +1,60 @@
-﻿@{
-    ViewBag.Title = "HairDressProfile";
+﻿
+@{  
+    
 }
+<h2>Personal Data:</h2>
+<table class="table table-bordered" id="left_bar">
+<tr>
+    @for (int i = 8; i < 21; i++)
+    {
+        if (i == Int32.Parse(hour.Hour.ToString()))
+        {
+            @:<td class="warning">
+        }
+        else
+        {
+            @:<td class="success">
+        }
+        @i.ToString(); @: :00 </td>
+        
+    }    
+</tr>
+<tr>
+<div id="appoints">
+     @for (int i = 8; i < 21; i++)
+    {
+        if (i == Int32.Parse(hour.Hour.ToString()))
+        {
+            @:<td class="">X</td>
+        }
+        else
+        {
+            @:<td class="active">V</td>
+        }
+    }    
+</div>
+</tr>
+</table>
 
-<h2>HairDressProfile</h2>
-<input type="text" id="Dob" />
 
- @section Scripts {
-    @Scripts.Render("~/bundles/jqueryui")
+<div id="date right_bar">
+<input class="datepicker" type="text" onchange="changeData()">
+</div>
 
+
+@section scripts
+{
+
+    @Scripts.Render("/Scripts/jquery.unobtrusive-ajax.js")
+    @*For datepicker and for change event a*@
     <script type="text/javascript">
-        $(document).ready(function () {
-            $("#Dob").datepicker();
+        $(function () {
+            $(".datepicker").datepicker();
         });
+        function changeDate() {
+
+
+        }
+
     </script>
 }

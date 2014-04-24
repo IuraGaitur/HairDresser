@@ -16,6 +16,7 @@ using AutoMapper;
 using GetHairdresser.Client.FormsAuth;
 using GetHairdresser.Client.UserService;
 using GetHairDresser.Common.BL.Entities;
+using GetHairdresser.Client.ExternalWrappers;
 
 
 namespace GetHairdresser.Client.Controllers
@@ -24,8 +25,54 @@ namespace GetHairdresser.Client.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+        private IUserService serviceUser;
+        private IOAuthWeb webLogging;
+
+        public AccountController()
+        {
+            this.serviceUser = new UserServiceClient();
+            this.webLogging = new OAuthWeb();
+        }
+
+        public AccountController(IUserService service)
+        {
+            this.serviceUser = service;
+        }
+        public AccountController(IOAuthWeb webLoging)
+        {
+            this.webLogging = webLoging;
+        }
+        public AccountController(IUserService service, IOAuthWeb webLoging)
+        {
+            this.serviceUser = service;
+            this.webLogging = webLoging;
+        }
+
 
         AuthentificManager authentifManag = new AuthentificManager();
+
+        [AllowAnonymous]
+        public ActionResult Manage(string url)
+        {
+            serviceUser = new UserServiceClient();
+            User user = serviceUser.GetUserData(new Guid(authentifManag.AuthGuid));
+            if (user != null)
+            {
+                if (user.typeClient == ClientCategory.Category.client.ToString())
+                {
+                    return RedirectToAction("Index", "Client");
+                }
+
+                if (user.typeClient == ClientCategory.Category.hairdress.ToString())
+                {
+                    return RedirectToAction("Index", "Hairdress");
+                }
+
+            }
+            return RedirectToAction("Index", "Home");
+
+        }
+
 
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -52,13 +99,13 @@ namespace GetHairdresser.Client.Controllers
             return View(model);
         }
 
-        // POST: /Account/LogOff
-        
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-
+            
+            authentifManag.LogOut();
             return RedirectToAction("Index", "Home");
         }
        
@@ -78,7 +125,7 @@ namespace GetHairdresser.Client.Controllers
         {
             User myUser;
             AuthentificManager authentifManag = new AuthentificManager();
-            AuthenticationResult result = OAuthWebSecurity.VerifyAuthentication(Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
+            AuthenticationResult result = webLogging.VerifyAutentication(Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
             if (!result.IsSuccessful)
             {
                 return RedirectToAction("ExternalLoginFailure");
@@ -88,56 +135,56 @@ namespace GetHairdresser.Client.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            else
+            
+                
+            //Get facebook token 
+            string accesstoken = result.ExtraData["accesstoken"].ToString();
+            var client = new Facebook.FacebookClient(accesstoken);
+            dynamic fbresult = client.Get("me");
+            //deserialize it
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            dynamic objData = jss.Deserialize<dynamic>(fbresult.ToString());
+                
+
+
+            //Take data from token
+            UserProfile model = new UserProfile()
             {
-                
-                //Get facebook token 
-                string accesstoken = result.ExtraData["accesstoken"].ToString();
-                var client = new Facebook.FacebookClient(accesstoken);
-                dynamic fbresult = client.Get("me");
-                //deserialize it
-                JavaScriptSerializer jss = new JavaScriptSerializer();
-                dynamic objData = jss.Deserialize<dynamic>(fbresult.ToString());
-                
+                gender = result.ExtraData["gender"],
+                lastName = objData["last_name"].ToString(),
+                firstName = objData["first_name"].ToString(),
+                location = objData["location"]["name"].ToString(),
+                UserFacebook = result.ProviderUserId
+            };
 
+            //See if user is registered already or not
+            serviceUser = new UserServiceClient();
+            
+            bool exist = serviceUser.Login(UserMap(model));
+            if (exist == true)
+            {
+                myUser = serviceUser.GetUserDataByFacebook(model.UserFacebook);
 
-                //Take data from token
-                UserProfile model = new UserProfile()
+                string userType = serviceUser.GetUserType(myUser);
+                authentifManag.Login(myUser, false);
+                ViewBag.ReturnUrl = returnUrl;
+
+                if (userType == ClientCategory.Category.client.ToString())
                 {
-                    gender = result.ExtraData["gender"],
-                    lastName = objData["last_name"].ToString(),
-                    firstName = objData["first_name"].ToString(),
-                    location = objData["location"]["name"].ToString(),
-                    UserFacebook = result.ProviderUserId
-                };
-
-                //See if user is registered already or not
-                using (UserServiceClient serviceUser = new UserServiceClient())
-                {
-                    bool exist = serviceUser.Login(UserMap(model));
-                    if (exist == true)
-                    {
-                        myUser = serviceUser.GetUserDataByFacebook(model.UserFacebook);
-                        string userType = serviceUser.GetUserType(myUser);
-                        authentifManag.Login(myUser, false);
-                        ViewBag.ReturnUrl = returnUrl;
-                        if (userType == ClientCategory.Category.client.ToString())
-                        {
-                            return RedirectToAction("Index", "Client");
-                        }
-                        else if (userType == ClientCategory.Category.hairdress.ToString())
-                        {
-                            return RedirectToAction("Index", "Hairdress");
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
+                    return RedirectToAction("Index", "Client");
                 }
 
-                return View("ExternalLoginConfirmation", model);
+                if (userType == ClientCategory.Category.hairdress.ToString())
+                {
+                    return RedirectToAction("Index", "Hairdress");
+                }
+                // go to error
+                    return null;
             }
+            
+
+            return View("ExternalLoginConfirmation", model);
+            
         }
 
         //
@@ -162,9 +209,8 @@ namespace GetHairdresser.Client.Controllers
         {
             
            
-            using (UserServiceClient serviceUser = new UserServiceClient())
-            {
-                GetHairDresser.Common.User register_user = UserMap(model);
+                serviceUser = new UserServiceClient();
+                User register_user = UserMap(model);
                 register_user.UserGuid = Guid.NewGuid();
                 authentifManag.Login(UserMap(model), false);
                 register_user.typeClient = typeClient;
@@ -174,13 +220,13 @@ namespace GetHairdresser.Client.Controllers
                 {
                     return RedirectToAction("Index", "Client");
                 }
-                else if (typeClient == ClientCategory.Category.hairdress.ToString())
+                if (typeClient == ClientCategory.Category.hairdress.ToString())
                 {
                     return RedirectToAction("Index", "Hairdress");
                 }
-            }
+
+
             return View();
-            
         }
 
 
@@ -235,12 +281,6 @@ namespace GetHairdresser.Client.Controllers
             }
         }
 
-        public enum ManageMessageId
-        {
-            ChangePasswordSuccess,
-            SetPasswordSuccess,
-            RemoveLoginSuccess,
-        }
 
         internal class ExternalLoginResult : ActionResult
         {

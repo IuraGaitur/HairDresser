@@ -15,3 +15,5 @@ C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDre
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.BL\obj\Debug\GetHairDresser.BL.csprojResolveAssemblyReference.cache
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.BL\obj\Debug\GetHairDresser.BL.dll
 C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.BL\obj\Debug\GetHairDresser.BL.pdb
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.BL\bin\Debug\CuttingEdge.Conditions.dll
+C:\Users\igaitur\documents\visual studio 2012\Projects\GetHairDresser\GetHairDresser.BL\bin\Debug\CuttingEdge.Conditions.xml

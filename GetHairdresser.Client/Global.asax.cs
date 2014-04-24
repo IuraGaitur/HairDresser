@@ -18,13 +18,13 @@ namespace GetHairdresser.Client
         protected void Application_Start()
         {
             
-            ViewEngines.Engines.Add(new CustomViewEngine());
-            AreaRegistration.RegisterAllAreas();
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            ViewEngines.Engines.Add(new CustomViewEngine());//View engine like Razor,Aspx//Create HTML from Views
+            AreaRegistration.RegisterAllAreas();//for roots //Route config
+            WebApiConfig.Register(GlobalConfiguration.Configuration);//register web api file
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);//filter applied to controllers and actions
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
-            AuthConfig.RegisterAuth();
+            BundleConfig.RegisterBundles(BundleTable.Bundles);//register css and js in order to be minified and bundled
+            AuthConfig.RegisterAuth();//register external auth
         }
     }
 }

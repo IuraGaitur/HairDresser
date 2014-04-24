@@ -11,7 +11,9 @@ namespace GetHairdresser.Client.FormsAuth
     {
         private const string AuthCookieName = "AuthCookie";
         private IAccountRepository repository;
+        IAuthentificationService service;
         private string _currentUserGuid;
+
 
         public FormsAuthentificationService()
         {
@@ -21,6 +23,11 @@ namespace GetHairdresser.Client.FormsAuth
         public FormsAuthentificationService(IAccountRepository repository)
         {
             this.repository = repository;
+
+        }
+        public FormsAuthentificationService(IAuthentificationService service)
+        {
+            this.service = service;
         }
 
 
@@ -32,7 +39,7 @@ namespace GetHairdresser.Client.FormsAuth
             FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
                1, user.UserGuid.ToString(), DateTime.Now, expiresDate, rememberMe, user.UserGuid.ToString());
             string EncryptedTicket = FormsAuthentication.Encrypt(ticket);
-            SetValue(AuthCookieName,user.UserGuid.ToString(),expiresDate);
+            SetValue(AuthCookieName,EncryptedTicket,expiresDate);
             _currentUserGuid = user.UserGuid.ToString();
 
         }
@@ -40,7 +47,8 @@ namespace GetHairdresser.Client.FormsAuth
         public void Logoff()
         {
             SetValue(AuthCookieName,null,DateTime.Now.AddYears(-1));
-            _currentUserGuid = null;
+            CurrentUser = null;
+            
         }
 
 
@@ -66,8 +74,14 @@ namespace GetHairdresser.Client.FormsAuth
                  }
                 return _currentUserGuid;
                 }
+            set{
+                if (value == null)
+                {
+                    _currentUserGuid = value;
+                }
+            }
         }
-        public static void SetValue(string cookieName,string cookieObject,DateTime dateStoreTo)
+        public void SetValue(string cookieName,string cookieObject,DateTime dateStoreTo)
         {
             HttpCookie cookie = HttpContext.Current.Response.Cookies[cookieName];
             if(cookie == null)

@@ -36,6 +36,7 @@ namespace GetHairDresser.DAL.EntityLayerPath
             //Database.SetInitializer<EntityLayerDB>(null);
         }
 
+
         public DbSet<UserDTO> users { get; set; }
         public DbSet<JobAppointmentDTO> jobAppoints { get; set; }
         public DbSet<MessageDTO> messages { get; set; }

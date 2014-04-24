@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "HairdresserList";
+}
+
+<div class="page-header">
+    <h2>List of hairdress</h2>
+</div>
+
+<ol class="round" id="left_bar">
+   <table class="table table-bordered table-stripped">
+       <tr>
+           <td>Name</td>
+           <td>Location</td>
+           <td>Rating</td>
+        </tr>
+       @foreach (var item in ViewBag.Hairdressers)
+       {
+           <tr>
+            <td><a href="/Hairdress/Index/@item.UserGuid.ToString()">@item.firstName.ToString() @item.lastName.ToString()</a></td>
+             <td>@item.location.ToString()</td>
+              <td>@item.hairdressInfo.rating</td>
+           </tr>
+       }
+   </table> 
+</ol>
+<div class="list-group" id="right_bar">
+  <a href="#" class="list-group-item active">
+    Get the nearest one's
+  </a>
+  <a href="#" class="list-group-item">Sort by name</a>
+  <a href="#" class="list-group-item">Sort by rating</a>
+  <a href="#" class="list-group-item">Sort by appointments</a>
+</div>

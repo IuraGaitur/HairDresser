@@ -1,61 +1,31 @@
-﻿@{
-    
-    GetHairdresser.Client.UserService.UserServiceClient service = new GetHairdresser.Client.UserService.UserServiceClient();
-    GetHairDresser.Common.User [] items = service.GetAllHairdress();
-    
-    
-    
-    List<GetHairDresser.Common.User> list = null;
-    GetHairDresser.Common.User user = new GetHairDresser.Common.User();
-    user.firstName = "iura";
-    user.lastName = "vasea";
-    user.typeClient = "hairdress";
-    user.age = 16;
-    user.email = "asdasd";
-    user.gender = "sadas";
-    user.hairdressInfo.rating = 6.5;
-    user.hairdressInfo.photo = "asd";
-    user.location = "asd";
-    user.UserGuid = new Guid("620961d7-2a0f-4dbc-9ee2-f1449be3da4f");
-    user.UserFacebook = "231312";
-    service.Register(user);
-    
-        
-    
-    
-    if (items != null)
-    {list = items.ToList();}
-        
+﻿@{    
     
 }
 @section featured {
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-            </hgroup>
-        </div>
-    </section>
+    
 }
-<h3>The following hairdressers:</h3>
-@if(list!=null)
-{
-    service.Register(user);
+<div class="page-header">
+    <h2>Top 10 hairdressers</h2>
+</div>
+
 <ol class="round">
-   <table class="table table-striped">
+   <table class="table table-bordered table-stripped">
        <tr>
            <td>Name</td>
            <td>Location</td>
            <td>Rating</td>
         </tr>
-       @foreach(var item in list)
+       @foreach (var item in ViewBag.Hairdressers)
        {
+           string title = item.firstName + " " + item.lastName;
            <tr>
-            <td>@item.firstName.ToString() @item.lastName.ToString()</td>
+            <td>@Html.ActionLink(title,"Index","Hairdress",new {guidId = item.UserGuid.ToString()},null)</td>
              <td>@item.location.ToString()</td>
               <td>@item.hairdressInfo.rating</td>
            </tr>
        }
    </table> 
-   
 </ol>
-}
+
+
+

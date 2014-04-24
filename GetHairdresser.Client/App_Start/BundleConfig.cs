@@ -18,6 +18,10 @@ namespace GetHairdresser.Client
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                        "~/Scripts/bootstrap.js",
+                        "~/Scripts/bootstrap-datepicker.js"));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -35,13 +39,13 @@ namespace GetHairdresser.Client
                         "~/Content/themes/base/jquery.ui.dialog.css",
                         "~/Content/themes/base/jquery.ui.slider.css",
                         "~/Content/themes/base/jquery.ui.tabs.css",
-                        "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
 
             bundles.Add(new ScriptBundle("~/Content/themes/boots").Include(
                 "~/Content/bootstrap.css","~/Content/bootstrap.min.css",
-                "~/Content/bootstrap-theme.css","~/Content/bootstrap-theme.min.css"));
+                "~/Content/bootstrap-theme.css","~/Content/bootstrap-theme.min.css",
+                "~/Content/datepicker.css"));
         }
     }
 }

@@ -16,5 +16,7 @@ namespace GetHairdresser.Client.FormsAuth
         void Logoff();
 
         string CurrentUser { get; }
+
+        void SetValue(string cookieName, string cookieObject, DateTime dateStoreTo);
     }
 }

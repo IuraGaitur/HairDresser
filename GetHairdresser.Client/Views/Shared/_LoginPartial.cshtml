@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     GetHairdresser.Client.FormsAuth.AuthentificManager manager = new GetHairdresser.Client.FormsAuth.AuthentificManager();
     GetHairDresser.Common.User user;
 }
@@ -15,15 +14,14 @@
 
             }
         }
-        Hello, @Html.ActionLink("Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
-        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+        Hello, @Html.ActionLink(@user.firstName.ToString() + " " + @user.lastName.ToString(),"Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })){
             @Html.AntiForgeryToken()
             <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
         }
     </text>
 } else {
     <ul>
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>@Html.ActionLink("Sign in with Facebook", "Login", "Account", routeValues: null, htmlAttributes: new {@class="btn btn-default" })</li>
     </ul>
 }

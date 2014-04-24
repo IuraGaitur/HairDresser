@@ -184,6 +184,8 @@
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HairdressController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="ExternalWrappers\IOAuthWeb.cs" />
+    <Compile Include="ExternalWrappers\OAuthWeb.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="FormsAuth\AccountRepository.cs" />
     <Compile Include="FormsAuth\AuthenticateAttribute.cs" />
@@ -230,6 +232,11 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\datepicker.css" />
+    <Content Include="Images\header.jpg" />
+    <Content Include="Images\hairdress_logo.jpg" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\datepicker.translate.js" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -425,10 +432,12 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Account\SetExternalCategory.cshtml" />
-    <Content Include="Views\Client\HairdresserList.cshtml" />
-    <Content Include="Views\Client\HairdresserPage.cshtml" />
+    <Content Include="Views\Hairdress\HairdresserList.cshtml" />
+    <Content Include="Views\Hairdress\HairdresserPage.cshtml" />
     <Content Include="Views\Client\ClientPage.cshtml" />
     <Content Include="Views\Hairdress\HairDressProfile.cshtml" />
     <None Include="Service References\JobAppointmentsService\JobAppointmentsService.wsdl" />
@@ -483,6 +492,7 @@
     <None Include="Service References\UserService\UserService3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Hairdress\Hairdressers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
