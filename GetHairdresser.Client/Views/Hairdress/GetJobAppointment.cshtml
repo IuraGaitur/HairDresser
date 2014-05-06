@@ -1,0 +1,64 @@
+﻿@model IEnumerable<GetHairDresser.Common.JobAppointment>
+@{
+    
+    
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DateJob)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HourJob)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateJob)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HourJob)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.JobAppID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.JobAppID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.JobAppID })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+@section scripts
+{
+    @Scripts.Render("/Scripts/jquery.unobtrusive-ajax.js")
+    <script type="text/javascript">
+        $.ajax({
+            url:'@Url.Action("JobAppoints", "Hairdress")',
+            type: 'Post',
+            success: function(data) {
+                alert(data);
+            }
+         });
+
+
+
+    </script>
+
+
+}
+

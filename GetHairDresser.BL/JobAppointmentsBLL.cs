@@ -81,7 +81,7 @@ namespace GetHairDresser.BL
 
         public List<JobAppointment> GetJobAppointments(User user)
         {
-            List<JobAppointment> jobs = null;
+            List<JobAppointment> jobs = new List<JobAppointment>();
             List<JobAppointmentDTO> temp_jobs = null;
             if (user != null)
             {

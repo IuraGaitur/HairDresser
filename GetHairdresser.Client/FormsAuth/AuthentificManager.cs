@@ -38,5 +38,9 @@ namespace GetHairdresser.Client.FormsAuth
                 return (service.CurrentUser != null);
             }
         }
+        public bool IsInRole(string role)
+        {
+            return service.CurrentUserRole == role;
+        }
     }
 }

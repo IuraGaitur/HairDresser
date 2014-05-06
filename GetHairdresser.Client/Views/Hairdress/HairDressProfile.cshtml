@@ -1,47 +1,70 @@
-﻿
-@{  
-    
+﻿@model DateTime?
+@{
+    DateTime hour = DateTime.Today;
+    var user = ViewBag.Hairdress;  
 }
-<h2>Personal Data:</h2>
-<table class="table table-bordered" id="left_bar">
-<tr>
-    @for (int i = 8; i < 21; i++)
-    {
-        if (i == Int32.Parse(hour.Hour.ToString()))
-        {
-            @:<td class="warning">
-        }
-        else
-        {
-            @:<td class="success">
-        }
-        @i.ToString(); @: :00 </td>
-        
-    }    
-</tr>
-<tr>
-<div id="appoints">
-     @for (int i = 8; i < 21; i++)
-    {
-        if (i == Int32.Parse(hour.Hour.ToString()))
-        {
-            @:<td class="">X</td>
-        }
-        else
-        {
-            @:<td class="active">V</td>
-        }
-    }    
-</div>
-</tr>
-</table>
-
-
-<div id="date right_bar">
-<input class="datepicker" type="text" onchange="changeData()">
+<div id="user_block">
+    @*Photo:@user.hairdressInfo.photo*@
+    <div id="left_block">
+        <img src="~/Images/User.png" alt="User image" />
+    </div>
+    <div id="right_block">
+        <ul style="list-style:none">
+            <li><h3>@user.firstName @user.lastName</h3></li>
+            @*Rating:@user.hairdressInfo.rating
+            Map:@user.hairdressInfo.map*@
+            <li><h4>Location:@user.location</h4></li>
+            <li><h4>Age:@user.age</h4></li>
+            <li><h4>Gender:@user.gender</h4></li>
+        </ul>
+    </div>
 </div>
 
 
+<div id="main">
+    <div id="left_bar">
+        <h2>Work graphic</h2>
+        <table class="table table-bordered" >
+          <tr>
+            @for (int i = 8; i < 21; i++)
+            {
+                if (i == Int32.Parse(hour.Hour.ToString()))
+                {
+                    @:<td class="warning">
+                }
+                else
+                {
+                    @:<td class="success">
+                }
+                @i.ToString(); @: :00 </td> 
+            }    
+          </tr>
+          
+          <tr>
+           <div id="appoints">
+             @for (int i = 8; i < 21; i++)
+            {
+                if (i == Int32.Parse(hour.Hour.ToString()))
+                {
+                    <td><img src="~/Images/check.png" alt="is not free" /></td>
+                }
+                else
+                {
+                    <td><img src="~/Images/free.png" alt="is free" /></td>
+                }
+            }   
+              </div>    
+         </tr>
+        </table>
+      </div>
+      <div id="right_bar">
+          <h2>Work day</h2>
+        <div>
+            <input class="datepicker" id="date_picker_right" type="text" onchange="changeData()">
+        </div>
+
+      </div>
+</div>
 @section scripts
 {
 
@@ -49,12 +72,18 @@
     @*For datepicker and for change event a*@
     <script type="text/javascript">
         $(function () {
-            $(".datepicker").datepicker();
+            $(".datepicker").datepicker({
+                format: 'dd/mm/yyyy',
+                startDate: '-3d',
+                daysOfWeekDisabled: [0, 6]
+            });
         });
         function changeDate() {
 
 
         }
+
+
 
     </script>
 }

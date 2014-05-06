@@ -1,0 +1,33 @@
+﻿@model IEnumerable<GetHairdresser.Client.Models.JobAppointment>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.jobDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.jobHour)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.jobDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.jobHour)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.JobAppointmentsID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.JobAppointmentsID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.JobAppointmentsID })
+        </td>
+    </tr>
+}
+
+</table>

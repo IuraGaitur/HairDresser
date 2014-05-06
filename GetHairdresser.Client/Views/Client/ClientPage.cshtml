@@ -2,8 +2,23 @@
 
 @{
     ViewBag.Title = "ClientPage";
+    var user = ViewBag.Client;
 }
 
-<h2>ClientPage</h2>
+<div id="user_block">
+    @*Photo:@user.hairdressInfo.photo*@
+    <div id="left_block">
+        <img src="~/Images/User.png" alt="User image" />
+    </div>
+    <div id="right_block">
+        <ul style="list-style:none">
+            <li><h3>@user.firstName @user.lastName</h3></li>
+            @*Rating:@user.hairdressInfo.rating
+            Map:@user.hairdressInfo.map*@
+            <li><h4>Location:@user.location</h4></li>
+            <li><h4>Age:@user.age</h4></li>
+            <li><h4>Gender:@user.gender</h4></li>
+        </ul>
+    </div>
+</div>
 
-<h2><label>@Model.firstName @Model.lastName</label></h2>

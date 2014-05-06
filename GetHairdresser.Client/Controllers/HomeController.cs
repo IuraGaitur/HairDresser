@@ -38,6 +38,23 @@ namespace GetHairdresser.Client.Controllers
 
 
         }
+        [HttpGet]
+        public ActionResult Edit()
+        {
+
+
+            //"_EditClientData",
+            return PartialView();
+        }
+        [HttpPost]
+        public ActionResult Edit(User user)
+        {
+
+
+            return PartialView();
+        }
+
+
 
     }
 }

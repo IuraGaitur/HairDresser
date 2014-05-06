@@ -14,58 +14,17 @@
         
         
     </head>
-    <body>        
+    <body>
         <header>
-            <div class="content-wrapper">
-                <div>
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <section id="logo_image">
-                        <p>@Html.ActionLink(" ", "Index", "Home")</p>
-                    </section>
-                    <nav class="navbar navbar-default" role="navigation">
-                      <div class="container-fluid">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                          </button>
-                            <a href="~/Home/Index"><img src="../Images/hairdress_logo.jpg" alt="Logo" width="70" height="90" class="navbar-brand"></a></p>
-                        </div>
-
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                          <ul class="nav navbar-nav">
-                            <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Hairdress List", "Index", "Hairdress")</li>
-                            <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                              <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                                <li>@Html.ActionLink(" ", "Index", "Hairdress")</li>
-                                <li><a href="Home/About">About</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">One more separated link</a></li>
-                              </ul>
-                            </li>
-                          </ul>
-                          <ul class="nav navbar-nav navbar-right">
-                            <form class="navbar-form navbar-left" role="search">
-                            <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Search">
-                            </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
-                          </form>
-                          </ul>
-                        </div><!-- /.navbar-collapse -->
-                      </div><!-- /.container-fluid -->
-                    </nav>
+        <div class="content-wrapper">
+            <div>
+            <section id="login">
+                @Html.Partial("_LoginPartial")
+            </section>
+            <section id="logo_image">
+                <p>@Html.ActionLink(" ", "Index", "Home")</p>
+            </section>        
+                @Html.Partial("_NavBarPartial")
                 </div>
             </div>
         </header>
@@ -86,9 +45,10 @@
         
         @RenderSection("scripts", required: false)
         <script type="text/javascript">
-        $( document ).ready(function() {
-        $('#cssmenu').prepend('<div id="bg-one"></div><div id="bg-two"></div><div id="bg-three"></div><div id="bg-four"></div>');
-        });
+            $(document).ready(function () {
+               
+                    $('#cssmenu').prepend('<div id="bg-one"></div><div id="bg-two"></div><div id="bg-three"></div><div id="bg-four"></div>');
+            });
         </script>
     </body>
 </html>

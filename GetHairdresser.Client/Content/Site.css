@@ -366,8 +366,8 @@ aside {
     }
 
 #socialLoginForm {
-    margin-left: 40px;
-    float: left;
+    margin-left: auto;
+    margin-right:auto;
     width: 40%;
 }
 
@@ -938,4 +938,19 @@ tr.pager td {
 {
     width:175px;
     margin-top:10px;
+}
+
+#left_block 
+{
+    width:100px;
+    height:200px;
+    float:left;
+}
+
+
+#right_block
+{
+    float:left;
+    width:200px;
+    height:200px;
 }

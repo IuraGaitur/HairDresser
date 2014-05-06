@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="EntityLayerPath\EntityLayer.cs" />
     <Compile Include="EntityLayerPath\EntityLayerDB.cs" />
+    <Compile Include="EntityLayerPath\EntityLayerInitializer.cs" />
     <Compile Include="Migrations\201404101610285_MyDB.cs" />
     <Compile Include="Migrations\201404101610285_MyDB.Designer.cs">
       <DependentUpon>201404101610285_MyDB.cs</DependentUpon>

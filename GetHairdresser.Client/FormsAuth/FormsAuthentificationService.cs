@@ -13,7 +13,7 @@ namespace GetHairdresser.Client.FormsAuth
         private IAccountRepository repository;
         IAuthentificationService service;
         private string _currentUserGuid;
-
+        private string _currentUserRole;
 
         public FormsAuthentificationService()
         {
@@ -37,7 +37,7 @@ namespace GetHairdresser.Client.FormsAuth
             if (rememberMe)
                 expiresDate.AddDays(10);
             FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
-               1, user.UserGuid.ToString(), DateTime.Now, expiresDate, rememberMe, user.UserGuid.ToString());
+               1, user.typeClient.ToString(), DateTime.Now, expiresDate, rememberMe, user.UserGuid.ToString());
             string EncryptedTicket = FormsAuthentication.Encrypt(ticket);
             SetValue(AuthCookieName,EncryptedTicket,expiresDate);
             _currentUserGuid = user.UserGuid.ToString();
@@ -63,8 +63,8 @@ namespace GetHairdresser.Client.FormsAuth
                         if(cookie != null && !String.IsNullOrEmpty(cookie.ToString()))
                         {
                             var ticket = FormsAuthentication.Decrypt(cookie.ToString());
-                            _currentUserGuid = ticket.Name;
-
+                            _currentUserGuid = ticket.UserData;
+                            _currentUserRole = ticket.Name;
                         }
                     }
                     catch(Exception e)
@@ -81,6 +81,12 @@ namespace GetHairdresser.Client.FormsAuth
                 }
             }
         }
+
+        public string CurrentUserRole
+        {
+            get { return _currentUserRole; }
+        }
+
         public void SetValue(string cookieName,string cookieObject,DateTime dateStoreTo)
         {
             HttpCookie cookie = HttpContext.Current.Response.Cookies[cookieName];

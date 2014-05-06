@@ -230,6 +230,34 @@ namespace GetHairdresser.Client.Controllers
         }
 
 
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult ChangeUserType(User user)
+        {
+            serviceUser = new UserServiceClient();
+            
+            if (user.typeClient == ClientCategory.Category.client.ToString())
+            {
+                user.typeClient = ClientCategory.Category.hairdress.ToString();
+                serviceUser.EditData(user);
+                
+            }
+
+            if (user.typeClient == ClientCategory.Category.hairdress.ToString())
+            {
+                user.typeClient = ClientCategory.Category.client.ToString();
+                serviceUser.EditData(user);
+                
+            }
+            RedirectToAction("LogOff");
+
+            return View();
+        }
+
+
+
+
+
         //
         // GET: /Account/ExternalLoginFailure
 

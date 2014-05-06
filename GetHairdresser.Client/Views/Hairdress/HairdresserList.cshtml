@@ -15,8 +15,10 @@
         </tr>
        @foreach (var item in ViewBag.Hairdressers)
        {
+           string title = item.firstName + " " + item.lastName;
+           string itemGuid = item.UserGuid.ToString();
            <tr>
-            <td><a href="/Hairdress/Index/@item.UserGuid.ToString()">@item.firstName.ToString() @item.lastName.ToString()</a></td>
+            <td>@Html.ActionLink(title,"Index",new {guidId = itemGuid})</td>
              <td>@item.location.ToString()</td>
               <td>@item.hairdressInfo.rating</td>
            </tr>
@@ -24,10 +26,42 @@
    </table> 
 </ol>
 <div class="list-group" id="right_bar">
-  <a href="#" class="list-group-item active">
-    Get the nearest one's
-  </a>
+  <a href="#" class="list-group-item active">Get the nearest one's</a>
   <a href="#" class="list-group-item">Sort by name</a>
   <a href="#" class="list-group-item">Sort by rating</a>
   <a href="#" class="list-group-item">Sort by appointments</a>
 </div>
+
+<ul class="pagination">
+  <li><a href="#">&laquo;</a></li>
+  <li><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+  <li><a href="#">&raquo;</a></li>
+</ul>
+
+
+
+@section scripts
+{
+
+    @Scripts.Render("/Scripts/jquery.unobtrusive-ajax.js")
+    @*For datepicker and for change event a*@
+    <script type="text/javascript">
+        $(function () {
+            $('#hairdress_list').addClass("active");
+            $('.list-group-item').on('click', function (e) {
+                var previous = $(this).closest('.list-group').children(".active");
+                previous.removeClass('active');
+                $(e.target).addClass('active');
+
+            });
+
+        });
+
+       
+
+    </script>
+}

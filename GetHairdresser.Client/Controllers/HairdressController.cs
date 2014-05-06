@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GetHairdresser.Client.JobAppointmentsService;
+using GetHairdresser.Client.FormsAuth;
 
 namespace GetHairdresser.Client.Controllers
 {
@@ -37,8 +38,25 @@ namespace GetHairdresser.Client.Controllers
             return View("HairdresserPage");
 
         }
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult GetJobAppoints()
+        {
+
+            UserServiceClient service = new UserServiceClient();
+            JobAppointmentsServiceClient jobService = new JobAppointmentsServiceClient();
+            FormsAuthentificationService serviceAuth = new FormsAuthentificationService();
+            string userGuid = serviceAuth.CurrentUser;
+            User user = service.GetUserData(new Guid(userGuid));
+            var jobs = jobService.GetJobAppointments(user);
+
+            var json = Json(jobs,JsonRequestBehavior.AllowGet);
+            return json;
+        }
+        
         
 
 
     }
 }
+
+

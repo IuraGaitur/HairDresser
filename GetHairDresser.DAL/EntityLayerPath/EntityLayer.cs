@@ -147,16 +147,7 @@ namespace GetHairDresser.DAL.EntityLayerPath
         public List<JobAppointmentDTO> GetJobAppointmentsByDate(UserDTO user, DateTime date)
         {
             var db = new EntityLayerDB();
-            //var jobs = (from job in db.jobAppoints
-            //                                where (job.Hairdresser.UserId == user.UserId && job.DateJob == date)
-            //                                select new JobAppointmentDTO()
-            //                                {
-            //                                    DateJob = job.DateJob,
-            //                                    Hairdresser = job.Hairdresser,
-            //                                    HourJob = job.HourJob,
-            //                                    JobAppID = job.JobAppID,
-            //                                    Status = job.Status
-            //                                }).ToList();
+
             var jobs = db.jobAppoints.Where(job => (job.Hairdresser.UserId == user.UserId && job.DateJob == date)).ToList();
 
             return jobs;
@@ -165,16 +156,18 @@ namespace GetHairDresser.DAL.EntityLayerPath
         public List<JobAppointmentDTO> GetJobAppointments(UserDTO user)
         {
             var db = new EntityLayerDB();
-            List<JobAppointmentDTO> jobs = (from job in db.jobAppoints
-                                            where (job.Hairdresser.UserId == user.UserId)
-                                            select new JobAppointmentDTO()
-                                            {
-                                                DateJob = job.DateJob,
-                                                Hairdresser = job.Hairdresser,
-                                                HourJob = job.HourJob,
-                                                JobAppID = job.JobAppID,
-                                                Status = job.Status
-                                            }).ToList();
+            //List<JobAppointmentDTO> jobs = (from job in db.jobAppoints
+            //                                where (job.Hairdresser.UserId == user.UserId)
+            //                                select new JobAppointmentDTO()
+            //                                {
+            //                                    DateJob = job.DateJob,
+            //                                    Hairdresser = job.Hairdresser,
+            //                                    HourJob = job.HourJob,
+            //                                    JobAppID = job.JobAppID,
+            //                                    Status = job.Status
+            //                                }).ToList();
+
+            var jobs = db.jobAppoints.Where(job => job.Hairdresser.UserId == user.UserId).ToList();
 
             return jobs;
         }
